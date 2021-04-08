@@ -25,12 +25,14 @@ float h(vec2 uv) {
 }
 
 void main() {
-  // YOUR CODE HERE
-  
-  // (Placeholder code. You will want to replace it.)
+  /*v_position = in_position + in_normal * texture(u_texture_2, in_uv).r * u_height_scaling;
+  v_position = u_model * v_position;
+  v_normal = normalize(u_model * in_normal);*/
+
   v_position = u_model * in_position;
   v_normal = normalize(u_model * in_normal);
+  v_position += texture(u_texture_2, in_uv).r * u_height_scaling * v_normal;
   v_uv = in_uv;
   v_tangent = normalize(u_model * in_tangent);
-  gl_Position = u_view_projection * u_model * in_position;
+  gl_Position = u_view_projection * v_position;
 }
