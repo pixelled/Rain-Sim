@@ -1,8 +1,8 @@
 #include "iostream"
 #include <nanogui/nanogui.h>
 
-#include "../clothMesh.h"
-#include "../clothSimulator.h"
+#include "../mesh.h"
+#include "../rainSimulator.h"
 #include "plane.h"
 
 using namespace std;
@@ -10,13 +10,12 @@ using namespace CGL;
 
 #define SURFACE_OFFSET 0.0001
 
-void Plane::collide(PointMass &pm) {
+void Plane::collide(Vertex &v) {
     // (Part 3): Handle collisions with planes.
-    double dist = dot(pm.position - point, normal);
+    double dist = dot(v.position - point, normal);
     if (dist <= 0) {
-        Vector3D tangent = pm.position + normal * (SURFACE_OFFSET - dist);
-        Vector3D corr = tangent - pm.last_position;
-        pm.position = pm.last_position + corr * (1 - friction);
+        Vector3D tangent = v.position + normal * (SURFACE_OFFSET - dist);
+        // Raindrop hits plane here
     }
 }
 

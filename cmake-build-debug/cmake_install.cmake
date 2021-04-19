@@ -1,8 +1,8 @@
-# Install script for directory: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4
+# Install script for directory: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/")
+  set(CMAKE_INSTALL_PREFIX "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,9 +34,9 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/cmake-build-debug/ext/nanogui/cmake_install.cmake")
-  include("/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/cmake-build-debug/CGL/cmake_install.cmake")
-  include("/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/cmake-build-debug/src/cmake_install.cmake")
+  include("/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/cmake-build-debug/ext/nanogui/cmake_install.cmake")
+  include("/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/cmake-build-debug/CGL/cmake_install.cmake")
+  include("/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/cmake-build-debug/src/cmake_install.cmake")
 
 endif()
 
@@ -48,5 +48,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

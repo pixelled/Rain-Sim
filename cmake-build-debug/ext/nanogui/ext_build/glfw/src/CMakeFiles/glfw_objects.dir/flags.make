@@ -6,5 +6,5 @@ C_FLAGS =  -Wno-deprecated-declarations -g -isysroot /Applications/Xcode.app/Con
 
 C_DEFINES = -D_GLFW_USE_CONFIG_H
 
-C_INCLUDES = -I"/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/ext/nanogui/ext/glfw/include" -I"/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/ext/nanogui/ext/glfw/src" -I"/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/cmake-build-debug/ext/nanogui/ext_build/glfw/src" 
+C_INCLUDES = -I"/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/ext/nanogui/ext/glfw/include" -I"/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/ext/nanogui/ext/glfw/src" -I"/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/cmake-build-debug/ext/nanogui/ext_build/glfw/src" 
 

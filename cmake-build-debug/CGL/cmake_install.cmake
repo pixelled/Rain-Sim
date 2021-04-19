@@ -1,8 +1,8 @@
-# Install script for directory: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/CGL
+# Install script for directory: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/CGL
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/CGL")
+  set(CMAKE_INSTALL_PREFIX "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/CGL")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/cmake-build-debug/CGL/src/cmake_install.cmake")
+  include("/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/cmake-build-debug/CGL/src/cmake_install.cmake")
 
 endif()
 

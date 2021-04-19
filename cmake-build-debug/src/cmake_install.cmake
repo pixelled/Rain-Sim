@@ -1,4 +1,4 @@
-# Install script for directory: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src
+# Install script for directory: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,21 +34,21 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/clothsim")
+   "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/clothsim")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4" TYPE EXECUTABLE FILES "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/cmake-build-debug/clothsim")
-  if(EXISTS "$ENV{DESTDIR}/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/clothsim" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/clothsim")
+file(INSTALL DESTINATION "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf" TYPE EXECUTABLE FILES "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/cmake-build-debug/clothsim")
+  if(EXISTS "$ENV{DESTDIR}/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/clothsim" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/clothsim")
     execute_process(COMMAND /usr/bin/install_name_tool
-      -delete_rpath "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/cmake-build-debug/ext/nanogui"
-      "$ENV{DESTDIR}/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/clothsim")
+      -delete_rpath "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/cmake-build-debug/ext/nanogui"
+      "$ENV{DESTDIR}/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/clothsim")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip" -u -r "$ENV{DESTDIR}/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/clothsim")
+      execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip" -u -r "$ENV{DESTDIR}/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/clothsim")
     endif()
   endif()
 endif()

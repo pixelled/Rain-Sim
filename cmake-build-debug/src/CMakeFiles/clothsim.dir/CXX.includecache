@@ -1274,91 +1274,37 @@ vector
 nanogui/widget.h
 -
 
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/cloth.cpp
-iostream
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/collision/collisionObject.h
+nanogui/nanogui.h
 -
-math.h
--
-random
--
-vector
--
-cloth.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/cloth.h
-collision/plane.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/collision/plane.h
-collision/sphere.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/collision/sphere.h
+../mesh.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/mesh.h
 
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/cloth.h
-unordered_set
--
-unordered_map
--
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/mesh.h
 vector
 -
 CGL/CGL.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/CGL/CGL.h
-CGL/misc.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/CGL/misc.h
-clothMesh.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/clothMesh.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/CGL/CGL.h
+vertex.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/vertex.h
+
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/particleSystem.cpp
+particleSystem.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/particleSystem.h
+
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/particleSystem.h
+vector
+-
+CGL/CGL.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/CGL/CGL.h
 collision/collisionObject.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/collision/collisionObject.h
-spring.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/spring.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/collision/collisionObject.h
 
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/clothMesh.h
-vector
--
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/vertex.h
 CGL/CGL.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/CGL/CGL.h
-pointMass.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/pointMass.h
-
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/collision/collisionObject.h
-nanogui/nanogui.h
--
-../clothMesh.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/clothMesh.h
-
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/collision/plane.h
-nanogui/nanogui.h
--
-../clothMesh.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/clothMesh.h
-collisionObject.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/collision/collisionObject.h
-
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/collision/sphere.h
-../clothMesh.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/clothMesh.h
-../misc/sphere_drawing.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/misc/sphere_drawing.h
-collisionObject.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/collision/collisionObject.h
-
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/misc/sphere_drawing.h
-vector
--
-nanogui/nanogui.h
--
-CGL/CGL.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/misc/CGL/CGL.h
-
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/pointMass.h
-CGL/CGL.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/CGL/CGL.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/CGL/CGL.h
 CGL/misc.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/CGL/misc.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/CGL/misc.h
 CGL/vector3D.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/CGL/vector3D.h
-
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/spring.h
-vector
--
-CGL/CGL.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/CGL/CGL.h
-pointMass.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/src/pointMass.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/CGL/vector3D.h
 

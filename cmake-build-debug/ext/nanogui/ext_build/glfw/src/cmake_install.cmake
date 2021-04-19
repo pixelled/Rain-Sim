@@ -1,4 +1,4 @@
-# Install script for directory: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/ext/nanogui/ext/glfw/src
+# Install script for directory: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/ext/nanogui/ext/glfw/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

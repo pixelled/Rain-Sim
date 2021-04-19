@@ -1,4 +1,4 @@
-# Install script for directory: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/ext/nanogui/ext/glfw
+# Install script for directory: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/ext/nanogui/ext/glfw
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/p4/cmake-build-debug/ext/nanogui/ext_build/glfw/src/cmake_install.cmake")
+  include("/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/cmake-build-debug/ext/nanogui/ext_build/glfw/src/cmake_install.cmake")
 
 endif()
 

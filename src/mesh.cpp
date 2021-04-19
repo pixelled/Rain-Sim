@@ -1,10 +1,10 @@
-#include "clothMesh.h"
+#include "mesh.h"
 #include <iostream>
 
 using namespace CGL;
 using namespace std;
 
-Vector3D PointMass::normal() {
+Vector3D Vertex::normal() {
   Vector3D n(0, 0, 0);
 
   Halfedge *start = halfedge;

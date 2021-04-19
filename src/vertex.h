@@ -10,8 +10,8 @@ using namespace CGL;
 // Forward declarations
 class Halfedge;
 
-struct PointMass {
-  PointMass(Vector3D position, bool pinned)
+struct Vertex {
+  Vertex(Vector3D position, bool pinned)
       : pinned(pinned), start_position(position), position(position),
         last_position(position) {}
 
