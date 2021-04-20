@@ -20,7 +20,7 @@ set(CLOTHSIM_VIEWER_SOURCE
 
     # Camera
     camera.cpp
-        particleSystem.cpp particleSystem.h)
+        particleSystem.cpp particleSystem.h "raindrop.cpp" "raindrop.h")
 
 # Windows-only sources
 if(WIN32)

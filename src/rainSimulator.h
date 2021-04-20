@@ -15,6 +15,10 @@ enum ShaderTypeHint {
     WIREFRAME = 0, NORMALS = 1, PHONG = 2
 };
 
+enum ShaderType {
+    GROUND_SHADER_IDX = 0, SPHERE_SHADER_IDX = 1, MESH_SHADER_IDX = 2
+};
+
 class RainSimulator {
 public:
     RainSimulator(std::string project_root, Screen *screen);
@@ -84,9 +88,6 @@ private:
     // OpenGL attributes
 
     int active_shader_idx = 0;
-    const int GROUND_SHADER_IDX = 0;
-    const int SPHERE_SHADER_IDX = 1;
-    const int MESH_SHADER_IDX = 2;
 
     vector<UserShader> shaders;
     vector<std::string> shaders_combobox_names;

@@ -150,7 +150,6 @@ void RainSimulator::load_shaders() {
         }
 
         UserShader user_shader(shader_name, nanogui_shader, hint);
-
         shaders.push_back(user_shader);
         shaders_combobox_names.push_back(shader_name);
     }
@@ -167,18 +166,22 @@ void RainSimulator::load_shaders() {
     for (size_t i = 0; i < shaders.size(); ++i) {
         cout << i << shaders[i].display_name << endl;
         if (shaders[i].display_name == "Ground" && i != GROUND_SHADER_IDX) {
-            UserShader& temp = shaders[i];
+            UserShader temp = shaders[i];
             shaders[i] = shaders[GROUND_SHADER_IDX];
             shaders[GROUND_SHADER_IDX] = temp;
         } else if (shaders[i].display_name == "Mesh" && i != MESH_SHADER_IDX) {
-            UserShader& temp = shaders[i];
+            UserShader temp = shaders[i];
             shaders[i] = shaders[MESH_SHADER_IDX];
             shaders[MESH_SHADER_IDX] = temp;
         } else if (shaders[i].display_name == "Sphere" && i != SPHERE_SHADER_IDX) {
-            UserShader& temp = shaders[i];
+            UserShader temp = shaders[i];
             shaders[i] = shaders[SPHERE_SHADER_IDX];
             shaders[SPHERE_SHADER_IDX] = temp;
         }
+    }
+
+    for (size_t i = 0; i < shaders.size(); ++i) {
+        cout << i << shaders[i].display_name << endl;
     }
 }
 
@@ -219,7 +222,8 @@ void RainSimulator::init() {
     initGUI(screen);
 
     // Initialize particle system
-    rainSystem = new ParticleSystem(512, 512, 100);
+    //rainSystem = new ParticleSystem(128, 128, 100);
+    rainSystem = new ParticleSystem(10, 10, 10);
 
     // Initialize camera
 

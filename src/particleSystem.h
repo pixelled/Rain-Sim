@@ -1,8 +1,6 @@
-//
-// Created by Richard Yan on 4/20/21.
-//
 #include <vector>
 #include "CGL/CGL.h"
+#include "raindrop.h"
 #include "collision/collisionObject.h"
 
 
@@ -15,8 +13,8 @@ public:
     ParticleSystem(unsigned int width, unsigned int height, int count) {
         this->width = width;
         this->height = height;
+        this->wind_f = Vector3D(0, 0, 0);
         this->count = count;
-        this->wind = Vector3D(0, 0, 0);
         wetMap = (char*) calloc((width * height * 3 + 3) / 4 * 4, sizeof(char));
     }
 
@@ -24,20 +22,25 @@ public:
         free(wetMap);
     }
 
+    void init_raindrops();
     void reset();
+
     char* wetMap;
     unsigned int width;
     unsigned int height;
     int count;
-    Vector3D wind;
+    Vector3D wind_f;
 
-    void updateWind(Vector3D velocity);
+    void updateWind(Vector3D wind_f);
 
     void simulate(double frames_per_sec, double simulation_steps,
                   vector<Vector3D> external_accelerations,
                   vector<CollisionObject *> *collision_objects);
 
+    vector<Raindrop> raindrops;
 
+    // Spatial hashing
+    unordered_map<float, vector<Raindrop *>*> map;
 };
 
 
