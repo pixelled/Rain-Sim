@@ -2,6 +2,7 @@
 #include "CGL/CGL.h"
 #include "raindrop.h"
 #include "collision/collisionObject.h"
+#include "collision/plane.h"
 
 
 #ifndef CLOTHSIM_PARTICLESYSTEM_H
@@ -38,6 +39,8 @@ public:
                   vector<CollisionObject *> *collision_objects);
 
     vector<Raindrop> raindrops;
+
+    vector<Raindrop*> drops;
 
     // Spatial hashing
     unordered_map<float, vector<Raindrop *>*> map;

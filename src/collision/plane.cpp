@@ -19,6 +19,10 @@ void Plane::collide(Vertex &v) {
     }
 }
 
+bool Plane::collide(Raindrop &s) {
+    return s.pos.y < point.y;
+}
+
 void Plane::render(GLShader &shader) {
     nanogui::Color color(0.7f, 0.7f, 0.7f, 1.0f);
 

@@ -5,6 +5,7 @@
 
 #include "../mesh.h"
 #include "collisionObject.h"
+#include "../raindrop.h"
 
 using namespace nanogui;
 using namespace CGL;
@@ -17,6 +18,7 @@ public:
 
   void render(GLShader &shader);
   void collide(Vertex &v);
+  bool collide(Raindrop &s);
 
   Vector3D point;
   Vector3D normal;

@@ -224,6 +224,7 @@ void RainSimulator::init() {
     // Initialize particle system
     //rainSystem = new ParticleSystem(128, 128, 100);
     rainSystem = new ParticleSystem(10, 10, 10);
+    rainSystem->init_raindrops();
 
     // Initialize camera
 
@@ -322,6 +323,12 @@ void RainSimulator::drawContents() {
     // Mesh
     GLShader &shader = prepareShader(MESH_SHADER_IDX);
     drawMesh(shader);
+
+
+    shader = prepareShader(SPHERE_SHADER_IDX);
+    for (int i = 0; i < rainSystem->drops.size(); i += 1) {
+        rainSystem->drops[i]->s->render(shader);
+    }
 
     // Plane & Sphere
     for (CollisionObject *co : *collision_objects) {
