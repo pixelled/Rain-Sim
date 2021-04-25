@@ -177,6 +177,10 @@ void RainSimulator::load_shaders() {
             UserShader temp = shaders[i];
             shaders[i] = shaders[SPHERE_SHADER_IDX];
             shaders[SPHERE_SHADER_IDX] = temp;
+        } else if (shaders[i].display_name == "Rain" && i != RAIN_SHADER_IDX) {
+            UserShader temp = shaders[i];
+            shaders[i] = shaders[RAIN_SHADER_IDX];
+            shaders[RAIN_SHADER_IDX] = temp;
         }
     }
 
@@ -223,7 +227,7 @@ void RainSimulator::init() {
 
     // Initialize particle system
     //rainSystem = new ParticleSystem(128, 128, 100);
-    rainSystem = new ParticleSystem(10, 10, 10);
+    rainSystem = new ParticleSystem(10, 10, 10); 
     rainSystem->init_raindrops();
 
     // Initialize camera
@@ -325,7 +329,7 @@ void RainSimulator::drawContents() {
     drawMesh(shader);
 
 
-    shader = prepareShader(SPHERE_SHADER_IDX);
+    shader = prepareShader(RAIN_SHADER_IDX);
     for (int i = 0; i < rainSystem->drops.size(); i += 1) {
         rainSystem->drops[i]->s->render(shader);
     }

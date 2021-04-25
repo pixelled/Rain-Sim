@@ -16,7 +16,7 @@ enum ShaderTypeHint {
 };
 
 enum ShaderType {
-    GROUND_SHADER_IDX = 0, SPHERE_SHADER_IDX = 1, MESH_SHADER_IDX = 2
+    GROUND_SHADER_IDX = 0, SPHERE_SHADER_IDX = 1, MESH_SHADER_IDX = 2, RAIN_SHADER_IDX = 3
 };
 
 class RainSimulator {
@@ -79,7 +79,7 @@ private:
     int simulation_steps = 30;
 
     CGL::Vector3D gravity = CGL::Vector3D(0, -9.8, 0);
-    CGL::Vector3D wind = CGL::Vector3D(0, 0, 0);
+    CGL::Vector3D wind = CGL::Vector3D(2, 0, 2);
 
     nanogui::Color color = nanogui::Color(1.0f, 1.0f, 1.0f, 1.0f);
 

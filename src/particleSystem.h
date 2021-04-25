@@ -31,6 +31,7 @@ public:
     unsigned int height;
     int count;
     Vector3D wind_f;
+    double sky_midpoint;
 
     void updateWind(Vector3D wind_f);
 

@@ -2,13 +2,14 @@
 
 void ParticleSystem::init_raindrops() {
     drops = vector<Raindrop*>();
+    sky_midpoint = 10.0;
 
     for (int i = 0; i < 500; i += 1) {
         double x = (double(rand()) / RAND_MAX - 0.5) * 5;
+        double y = (double(rand()) / RAND_MAX - 0.5) * sky_midpoint;
         double z = (double(rand()) / RAND_MAX - 0.5) * 5;
-        double y = (double(rand()) / RAND_MAX - 0.5) * 5;
         
-        drops.push_back(new Raindrop(1.0, Vector3D(x, 5.0 + y, z), Vector3D(0, 0, 0)));
+        drops.push_back(new Raindrop(1.0, Vector3D(x, sky_midpoint + y, z), Vector3D(0, 0, 0)));
     }
 }
 
@@ -48,13 +49,20 @@ void ParticleSystem::simulate(double frames_per_sec, double simulation_steps, ve
 
     for (int i = 0; i < drops.size(); i += 1) {
         // Reset forces
-        drops[i]->forces = accs * drops[i]->mass;
+        drops[i]->forces = (accs * drops[i]->mass) +  this->wind_f; 
 
         // correct the velocity and position
         drops[i]->vel += (drops[i]->forces / drops[i]->mass) * delta_t * simulation_steps;
 
+        // Correct for terminal velocity, 9 meters per second
+        double speed = sqrt(dot(drops[i]->vel, drops[i]->vel));
+        if (speed > 9.0) {
+            drops[i]->vel = 9.0 * drops[i]->vel / speed;
+        }
+
+
         drops[i]->last_pos = drops[i]->pos;
-        drops[i]->pos += 0.1 * drops[i]->vel * delta_t * simulation_steps;
+        drops[i]->pos += 0.5 * drops[i]->vel * delta_t * simulation_steps;
 
         for (CollisionObject *co : *collision_objects) {
             if (typeid(*co) == typeid(Plane)) {
@@ -62,9 +70,10 @@ void ParticleSystem::simulate(double frames_per_sec, double simulation_steps, ve
                 if (p->collide(*drops[i])) {
                     // If the droplet collided with the groud, replace it with a new droplet in the sky
                     double x = (double(rand()) / RAND_MAX - 0.5) * 5;
+                    double y = (double(rand()) / RAND_MAX - 0.5) * sky_midpoint;
                     double z = (double(rand()) / RAND_MAX - 0.5) * 5;
-                    double y = (double(rand()) / RAND_MAX - 0.5) * 5;
-                    drops[i]->pos = Vector3D(x, 5.0 + y, z);
+                    
+                    drops[i]->pos = Vector3D(x, sky_midpoint + y, z);
                     drops[i]->vel = Vector3D(0, 0, 0);
                 }             
             }
