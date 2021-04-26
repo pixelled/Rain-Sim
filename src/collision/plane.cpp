@@ -19,8 +19,14 @@ void Plane::collide(Vertex &v) {
     }
 }
 
-bool Plane::collide(Raindrop &s) {
-    return s.pos.y < point.y;
+bool Plane::collide(Raindrop &s, Vector3D &pos) {
+    double dist = dot(s.pos - point, normal);
+    if (dist <= 0) {
+        pos = s.pos - dist;
+        return true;
+    }
+
+    return false;
 }
 
 void Plane::render(GLShader &shader) {

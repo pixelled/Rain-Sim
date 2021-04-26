@@ -30,22 +30,22 @@ void ParticleSystem::simulate(double frames_per_sec, double simulation_steps, ve
         accs += a;
     }
 
-    for (Raindrop& r : raindrops) {
-        Vector3D air_resistance = -r.mass * Vector3D(r.vel.x * r.vel.x, r.vel.y * r.vel.y, r.vel.z * r.vel.z);
-        r.forces = wind_f + air_resistance;
-        Vector3D acc = r.forces / r.mass + accs;
-        Vector3D pos_temp = r.pos;
-        Vector3D vel_temp = r.vel;
-        r.vel = r.vel + acc * delta_t;
-        r.pos = r.pos + (r.vel + vel_temp) * delta_t / 2.;
-    }
+    // for (Raindrop& r : raindrops) {
+    //     Vector3D air_resistance = -r.mass * Vector3D(r.vel.x * r.vel.x, r.vel.y * r.vel.y, r.vel.z * r.vel.z);
+    //     r.forces = wind_f + air_resistance;
+    //     Vector3D acc = r.forces / r.mass + accs;
+    //     Vector3D pos_temp = r.pos;
+    //     Vector3D vel_temp = r.vel;
+    //     r.vel = r.vel + acc * delta_t;
+    //     r.pos = r.pos + (r.vel + vel_temp) * delta_t / 2.;
+    // }
 
-    for (int i = 0; i < 3 * this->width * this->height; i += 3) {
-        int x = rand() % 256;
-        this->wetMap[i] = x;
-        this->wetMap[i + 1] = x;
-        this->wetMap[i + 2] = x;
-    }
+    // for (int i = 0; i < 3 * this->width * this->height; i += 3) {
+    //     int x = rand() % 256;
+    //     this->wetMap[i] = x;
+    //     this->wetMap[i + 1] = x;
+    //     this->wetMap[i + 2] = x;
+    // }
 
     for (int i = 0; i < drops.size(); i += 1) {
         // Reset forces
@@ -67,7 +67,8 @@ void ParticleSystem::simulate(double frames_per_sec, double simulation_steps, ve
         for (CollisionObject *co : *collision_objects) {
             if (typeid(*co) == typeid(Plane)) {
                 Plane* p = (Plane*) co;
-                if (p->collide(*drops[i])) {
+                Vector3D pos = Vector3D(0, 0, 0);
+                if (p->collide(*drops[i], pos)) {
                     // If the droplet collided with the groud, replace it with a new droplet in the sky
                     double x = (double(rand()) / RAND_MAX - 0.5) * 5;
                     double y = (double(rand()) / RAND_MAX - 0.5) * sky_midpoint;
@@ -75,6 +76,11 @@ void ParticleSystem::simulate(double frames_per_sec, double simulation_steps, ve
                     
                     drops[i]->pos = Vector3D(x, sky_midpoint + y, z);
                     drops[i]->vel = Vector3D(0, 0, 0);
+
+                    rainMap[3 * int(pos.x * width + pos.z)] = 255;
+                    rainMap[3 * int(pos.x * width + pos.z) + 1] = 255;
+                    rainMap[3 * int(pos.x * width + pos.z) + 2] = 255;
+                    
                 }             
             }
             

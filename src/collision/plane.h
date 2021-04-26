@@ -18,7 +18,7 @@ public:
 
   void render(GLShader &shader);
   void collide(Vertex &v);
-  bool collide(Raindrop &s);
+  bool collide(Raindrop &s, Vector3D &pos);
 
   Vector3D point;
   Vector3D normal;

@@ -17,6 +17,7 @@ public:
         this->wind_f = Vector3D(0, 0, 0);
         this->count = count;
         wetMap = (char*) calloc((width * height * 3 + 3) / 4 * 4, sizeof(char));
+        rainMap = (char*) calloc((width * height * 3 + 3) / 4 * 4, sizeof(char));
     }
 
     ~ParticleSystem() {
@@ -27,6 +28,7 @@ public:
     void reset();
 
     char* wetMap;
+    char* rainMap;
     unsigned int width;
     unsigned int height;
     int count;
