@@ -1,0 +1,38 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>CS 184 - Rain Simulator</title>
+  <meta name="description" content="CS 184 - Raindrop Simulator">
+  <meta name="author" content="Richard Yan, Sher Shah, Qingyuan Liu, Joie Zhou">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Arvo&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+
+</head>
+
+<body>
+
+  <div class="container container-title">
+    <h1>Rain Simulator</h1>
+    <h3>CS 184</h3>
+    <h3>Richard Yan, Sher Shah, Qingyuan Liu, Joie Zhou</h3>
+  </div>
+
+  <div class="container container-report">
+    <p>So far we created a simple scene with rain falling on a dry ground and rain splashes. The scene consists of a plane representing the ground and a sphere to highlight the reflectance of water on the ground. The rain system is initalized with 100 raindrop particles that are uniformly randomly positioned with mean 10 meters above to ground. Each raindrop was modeled as low resolution sphere meshes with a special rain shader (currently uses phong shading). Raindrops are also effect by a wind force and their velocity is capped by a terminal velocity of 9 meters per second. Once a raindrop hits the ground it is reinitalized in the sky above and the texture of the ground is dynamically updated to display a splash, increase the reflectance of the ground, and decrease the opacity.</p>
+    <p>Here are some snapshots of our simulation thus far.</p>
+    <p>We are currently on pace with our schedule, but face a few issues. One such issue is that simulating 500 raindrops at a time causes lag. The current fix of reducing the number of simulated particles works well enough for our small scene, but will need a more robust fix when we want to make a bigger scene with more features such as lighitng, streak blurring.</p>
+    <p>While we are currenlty on pace, our final week consists of multiple aspirational goals which might have to be cut down in order to polish the simulation. </p>
+  </div>
+
+  <div class="container container-video"></div>
+
+  <div class="container container-slides"></div>
+  
+
+</body>
+</html>

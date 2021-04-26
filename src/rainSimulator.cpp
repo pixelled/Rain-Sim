@@ -314,8 +314,22 @@ void RainSimulator::drawContents() {
     glEnable(GL_DEPTH_TEST);
 
     if (!is_paused) {
+
+        // Update wind so it isn't constant
+        // loops every 500 render steps
+        this->t = (this->t + 1) % 500; 
+        double strength = 0.5 * sin(2 * M_PI * double(t) / 500.0) + 0.5;
+        Vector3D cur_wind = wind * strength;
+
+        double angle = (30 * double(t) / 100.0 + 15) * (M_PI / 180.0);
+
+        cur_wind = Vector3D(
+            cur_wind.x * cos(angle) + cur_wind.z * sin(angle),
+            cur_wind.y,
+            -cur_wind.x * sin(angle) + cur_wind.z * cos(angle));
+
         vector<Vector3D> external_accelerations = {gravity};
-        rainSystem->updateWind(wind);
+        rainSystem->updateWind(cur_wind);
         for (int i = 0; i < simulation_steps; i++) {
             rainSystem->simulate(frames_per_sec, simulation_steps, external_accelerations, collision_objects);
         }

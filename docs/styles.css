@@ -1,0 +1,51 @@
+h1 {
+  font-family: "Arvo", serif;
+  font-size: 86px;
+}
+
+h2 {
+  font-family: "Arvo", serif;
+  font-size: 54px
+}
+
+h3 {
+  font-family: "Arvo", serif;
+  font-size: 43px;
+}
+
+h4 {
+  font-family: "Arvo", serif;
+  font-size: 30px;
+}
+
+h5 {
+  font-family: "Arvo", serif;
+  font-size: 21px;
+}
+
+h6 {
+  font-family: "Arvo", serif;
+  font-size: 18px;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+}
+
+.container {
+  margin: auto;
+  max-width: 1000px;
+}
+
+.container-title {
+
+}
+
+.container-title p {
+  line-height: 18px;
+}
+
+.container-report {
+
+}
