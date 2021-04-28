@@ -334,8 +334,8 @@ void RainSimulator::drawContents() {
         for (int i = 0; i < simulation_steps; i++) {
             rainSystem->simulate(frames_per_sec, simulation_steps, external_accelerations, collision_objects);
         }
-        dyn_texture(1, m_gl_texture_1, rainSystem->wetMap, rainSystem->width, rainSystem->height);
-        //dyn_texture(1, m_gl_texture_3, rainSystem->collisionMap, (int)sqrt(rainSystem->collisionMapRes), (int)sqrt(rainSystem->collisionMapRes));
+        // dyn_texture(1, m_gl_texture_1, rainSystem->wetMap, rainSystem->width, rainSystem->height);
+        
     }
 
     // TODO: maybe support different shaders for multiple meshes/multiple spheres
@@ -355,6 +355,7 @@ void RainSimulator::drawContents() {
         if (typeid(*co) == typeid(Sphere)) {
             shader = prepareShader(SPHERE_SHADER_IDX);
         } else if (typeid(*co) == typeid(Plane)) {
+            dyn_texture(1, m_gl_texture_3, rainSystem->collisionMap, (int)sqrt(rainSystem->collisionMapRes), (int)sqrt(rainSystem->collisionMapRes));
             shader = prepareShader(GROUND_SHADER_IDX);
         } else {
             shader = prepareShader(-1);

@@ -11,6 +11,10 @@ void ParticleSystem::init_raindrops() {
         
         drops.push_back(new Raindrop(1.0, Vector3D(x, sky_midpoint + y, z), Vector3D(0, 0, 0)));
     }
+
+    for (int i = 0; i < (collisionMapRes * 3 + 3) / 4 * 4; i += 1) {
+        this->collisionMap[i] = 255;
+    }
 }
 
 void ParticleSystem::reset() {
@@ -69,37 +73,31 @@ void ParticleSystem::simulate(double frames_per_sec, double simulation_steps, ve
                 Plane* p = (Plane*) co;
                 Vector3D pos = Vector3D(0, 0, 0);
                 if (p->collide(*drops[i], pos)) {
-                    // If the droplet collided with the groud, replace it with a new droplet in the sky
-                    int color = rand() % 256;
+                
                     
                     if (drops[i]->pos.x >= 0 && drops[i]->pos.z >= 0) {
-                        /*double pos_width = drops[i]->pos.z / this->width;
+                        double pos_width = drops[i]->pos.z / this->width;
                         double pos_height = drops[i]->pos.y / this->height;
                         int rast_width = (int)round(pos_width * sqrt(collisionMapRes));
                         int rast_height = (int)round(pos_height * sqrt(collisionMapRes));
                         int map_width = rast_width % (int)sqrt(collisionMapRes);
-                        int map_height = rast_height - (rast_height % (int)sqrt(collisionMapRes));*/
-                        int index = 3 * ((int(drops[i]->pos.x) * height) + int(drops[i]->pos.z));
+                        int map_height = rast_height - (rast_height % (int)sqrt(collisionMapRes));
+                        int index = 3 * ((int(drops[i]->pos.z) * height) + int(drops[i]->pos.x));
 
-                        if (wetMap[index] < 5) {
-                            wetMap[index] = 0;
-                            wetMap[index + 1] = 0;
-                            wetMap[index + 2] = 0;
+                        if (collisionMap[index] < 5) {
+                            collisionMap[index] = 0;
+                            collisionMap[index + 1] = 0;
+                            collisionMap[index + 2] = 0;
                         }
                         else {
-                            wetMap[index] -= 1;
-                            wetMap[index + 1] -= 1;
-                            wetMap[index + 2] -= 1;
+                            collisionMap[index] -= 1;
+                            collisionMap[index + 1] -= 1;
+                            collisionMap[index + 2] -= 1;
                         }
                     }
                     
-                    //if (index != 0) {
-                    //    index = index + 3;
-                    //}
-                    //this->collisionMap[index] = color;
-                    //this->collisionMap[index + 1] = color;
-                    //this->collisionMap[index + 2] = color;
 
+                    // If the droplet collided with the groud, replace it with a new droplet in the sky
                     double x = (double(rand()) / RAND_MAX - 0.5) * 5;
                     double y = (double(rand()) / RAND_MAX - 0.5) * sky_midpoint;
                     double z = (double(rand()) / RAND_MAX - 0.5) * 5;
