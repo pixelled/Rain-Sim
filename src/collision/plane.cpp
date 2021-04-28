@@ -25,6 +25,7 @@ bool Plane::collide(Raindrop &s, Vector3D &pos) {
         pos = s.pos - dist;
         return true;
     }
+
     return false;
 }
 

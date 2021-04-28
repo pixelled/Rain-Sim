@@ -30,22 +30,25 @@ h6 {
 
 p {
   font-family: "Roboto", sans-serif;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .container {
-  margin: auto;
+  margin: 50px auto;
   max-width: 1000px;
 }
 
 .container-title {
-
 }
 
 .container-title p {
-  line-height: 18px;
+  line-height: 24px;
 }
 
 .container-report {
+  max-width: 800px;
+}
 
+.container-video {
+  text-align: center;
 }
