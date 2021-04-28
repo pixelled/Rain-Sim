@@ -16,19 +16,24 @@ public:
         this->height = height;
         this->wind_f = Vector3D(0, 0, 0);
         this->count = count;
+        this->collisionMapRes = width * height;
         wetMap = (char*) calloc((width * height * 3 + 3) / 4 * 4, sizeof(char));
+        collisionMap = (char*)calloc((collisionMapRes * 3 + 3) / 4 * 4, sizeof(char));
     }
 
     ~ParticleSystem() {
         free(wetMap);
+        free(collisionMap);
     }
 
     void init_raindrops();
     void reset();
 
     char* wetMap;
+    char* collisionMap;
     unsigned int width;
     unsigned int height;
+    int collisionMapRes;
     int count;
     Vector3D wind_f;
     double sky_midpoint;

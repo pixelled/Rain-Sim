@@ -82,7 +82,7 @@ void RainSimulator::load_textures() {
 
     m_gl_texture_1_size = load_texture(1, m_gl_texture_1, (m_project_root + "/textures/texture_1.png").c_str());
     m_gl_texture_2_size = load_texture(2, m_gl_texture_2, (m_project_root + "/textures/texture_2.png").c_str());
-    m_gl_texture_3_size = load_texture(3, m_gl_texture_3, (m_project_root + "/textures/texture_3.png").c_str());
+    m_gl_texture_3_size = load_texture(3, m_gl_texture_3, (m_project_root + "/textures/uvmap.png").c_str());
     m_gl_texture_4_size = load_texture(4, m_gl_texture_4, (m_project_root + "/textures/texture_4.png").c_str());
 
     std::cout << "Texture 1 loaded with size: " << m_gl_texture_1_size << std::endl;
@@ -318,10 +318,10 @@ void RainSimulator::drawContents() {
         // Update wind so it isn't constant
         // loops every 500 render steps
         this->t = (this->t + 1) % 500; 
-        double strength = 0.5 * sin(2 * M_PI * double(t) / 500.0) + 0.5;
+        double strength = 0.5 * sin(2 * PI * double(t) / 500.0) + 0.5;
         Vector3D cur_wind = wind * strength;
 
-        double angle = (30 * double(t) / 100.0 + 15) * (M_PI / 180.0);
+        double angle = (30 * double(t) / 100.0 + 15) * (PI / 180.0);
 
         cur_wind = Vector3D(
             cur_wind.x * cos(angle) + cur_wind.z * sin(angle),
@@ -330,10 +330,12 @@ void RainSimulator::drawContents() {
 
         vector<Vector3D> external_accelerations = {gravity};
         rainSystem->updateWind(cur_wind);
+
         for (int i = 0; i < simulation_steps; i++) {
             rainSystem->simulate(frames_per_sec, simulation_steps, external_accelerations, collision_objects);
         }
         dyn_texture(1, m_gl_texture_1, rainSystem->wetMap, rainSystem->width, rainSystem->height);
+        //dyn_texture(1, m_gl_texture_3, rainSystem->collisionMap, (int)sqrt(rainSystem->collisionMapRes), (int)sqrt(rainSystem->collisionMapRes));
     }
 
     // TODO: maybe support different shaders for multiple meshes/multiple spheres
