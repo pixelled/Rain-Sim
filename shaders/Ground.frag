@@ -18,5 +18,7 @@ void main() {
   vec3 wi = reflect(wo, vec3(v_normal));
   out_color = texture(u_texture_cubemap, wi);
   vec4 tex = texture(u_texture_3, v_texcoords);
+  //out_color = texture(u_texture_3, v_texcoords);
+
   out_color.a = tex.r;
 }

@@ -16,7 +16,7 @@ public:
         this->height = height;
         this->wind_f = Vector3D(0, 0, 0);
         this->count = count;
-        this->collisionMapRes = width * height;
+        this->collisionMapRes = 150;
         wetMap = (char*) calloc((width * height * 3 + 3) / 4 * 4, sizeof(char));
         collisionMap = (char*)calloc((collisionMapRes * 3 + 3) / 4 * 4, sizeof(char));
     }

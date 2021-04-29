@@ -12,6 +12,7 @@ uniform mat4 u_view_projection;
 in vec4 in_position;
 in vec4 in_normal;
 in vec4 in_tangent;
+in vec2 in_texcoords;
 in vec2 in_uv;
 
 // In a vertex shader, the "out" variables are per-vertex properties
@@ -22,6 +23,7 @@ in vec2 in_uv;
 out vec4 v_position;
 out vec4 v_normal;
 out vec2 v_uv;
+out vec2 v_texcoords;
 out vec4 v_tangent;
 
 // Every shader features a "main" function.
@@ -37,6 +39,7 @@ void main() {
   v_normal = normalize(u_model * in_normal);
   v_uv = in_uv;
   v_tangent = normalize(u_model * in_tangent);
+  v_texcoords = in_texcoords;
   
   // The final screen-space location of this vertex which the
   // GPU's triangle rasterizer takes in.

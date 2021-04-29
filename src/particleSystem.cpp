@@ -77,12 +77,13 @@ void ParticleSystem::simulate(double frames_per_sec, double simulation_steps, ve
                     
                     if (drops[i]->pos.x >= 0 && drops[i]->pos.z >= 0) {
                         double pos_width = drops[i]->pos.z / this->width;
-                        double pos_height = drops[i]->pos.y / this->height;
+                        double pos_height = drops[i]->pos.x / this->height;
                         int rast_width = (int)round(pos_width * sqrt(collisionMapRes));
                         int rast_height = (int)round(pos_height * sqrt(collisionMapRes));
-                        int map_width = rast_width % (int)sqrt(collisionMapRes);
-                        int map_height = rast_height - (rast_height % (int)sqrt(collisionMapRes));
-                        int index = 3 * ((int(drops[i]->pos.z) * height) + int(drops[i]->pos.x));
+                        int map_width = rast_width - (rast_width % (int)sqrt(collisionMapRes));
+                        int map_height = rast_height % (int)sqrt(collisionMapRes);
+                        int index = 3 * ((rast_width * (int)sqrt(collisionMapRes)) + rast_height);
+                        //int index = 3 * ((int(drops[i]->pos.z) * height) + int(drops[i]->pos.x));
 
                         if (collisionMap[index] < 5) {
                             collisionMap[index] = 0;
