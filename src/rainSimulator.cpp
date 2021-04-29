@@ -229,7 +229,7 @@ void RainSimulator::init() {
 
     // Initialize particle system
     //rainSystem = new ParticleSystem(128, 128, 100);
-    rainSystem = new ParticleSystem(10, 10, 10); 
+    rainSystem = new ParticleSystem(50, 50, 10); 
     rainSystem->init_raindrops();
 
     // Initialize camera
@@ -376,12 +376,15 @@ void RainSimulator::drawContents() {
     Vector3D vel(1.0, 1.0, 0.0);
     raindrop_renderer.render(shader, pos, vel);
 
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_DST_ALPHA); 
+
     // Plane & Sphere
     for (CollisionObject *co : *collision_objects) {
         if (typeid(*co) == typeid(Sphere)) {
             shader = prepareShader(SPHERE_SHADER_IDX);
         } else if (typeid(*co) == typeid(Plane)) {
-            dyn_texture(1, m_gl_texture_3, rainSystem->collisionMap, (int)sqrt(rainSystem->collisionMapRes), (int)sqrt(rainSystem->collisionMapRes));
+            dyn_texture(1, m_gl_texture_3, rainSystem->collisionMap, rainSystem->width, rainSystem->height);
             shader = prepareShader(GROUND_SHADER_IDX);
         } else {
             shader = prepareShader(-1);

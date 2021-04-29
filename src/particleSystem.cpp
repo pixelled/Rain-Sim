@@ -5,14 +5,14 @@ void ParticleSystem::init_raindrops() {
     sky_midpoint = 10.0;
 
     for (int i = 0; i < 500; i += 1) {
-        double x = (double(rand()) / RAND_MAX - 0.5) * 5;
+        double x = 4 + (double(rand()) / RAND_MAX - 0.5) * 5;
         double y = (double(rand()) / RAND_MAX - 0.5) * sky_midpoint;
-        double z = (double(rand()) / RAND_MAX - 0.5) * 5;
+        double z = 4 + (double(rand()) / RAND_MAX - 0.5) * 5;
         
         drops.push_back(new Raindrop(1.0, Vector3D(x, sky_midpoint + y, z), Vector3D(0, 0, 0)));
     }
 
-    for (int i = 0; i < (collisionMapRes * 3 + 3) / 4 * 4; i += 1) {
+    for (int i = 0; i < 3 * collisionMapRes; i += 1) {
         this->collisionMap[i] = 255;
     }
 }
@@ -34,84 +34,64 @@ void ParticleSystem::simulate(double frames_per_sec, double simulation_steps, ve
         accs += a;
     }
 
-    // for (Raindrop& r : raindrops) {
-    //     Vector3D air_resistance = -r.mass * Vector3D(r.vel.x * r.vel.x, r.vel.y * r.vel.y, r.vel.z * r.vel.z);
-    //     r.forces = wind_f + air_resistance;
-    //     Vector3D acc = r.forces / r.mass + accs;
-    //     Vector3D pos_temp = r.pos;
-    //     Vector3D vel_temp = r.vel;
-    //     r.vel = r.vel + acc * delta_t;
-    //     r.pos = r.pos + (r.vel + vel_temp) * delta_t / 2.;
-    // }
-
-    // for (int i = 0; i < 3 * this->width * this->height; i += 3) {
-    //     int x = rand() % 256;
-    //     this->wetMap[i] = x;
-    //     this->wetMap[i + 1] = x;
-    //     this->wetMap[i + 2] = x;
-    // }
-
     for (int i = 0; i < drops.size(); i += 1) {
-        // Reset forces
-        drops[i]->forces = (accs * drops[i]->mass) +  this->wind_f; 
+        for (int j = 0; j < simulation_steps; j += 1) {
 
-        // correct the velocity and position
-        drops[i]->vel += (drops[i]->forces / drops[i]->mass) * delta_t * simulation_steps;
+            // Reset forces
+            drops[i]->forces = (accs * drops[i]->mass) + this->wind_f; 
 
-        // Correct for terminal velocity, 9 meters per second
-        double speed = sqrt(dot(drops[i]->vel, drops[i]->vel));
-        if (speed > 9.0) {
-            drops[i]->vel = 9.0 * drops[i]->vel / speed;
-        }
+            // correct the velocity and position
+            drops[i]->vel += (drops[i]->forces / drops[i]->mass) * delta_t;
 
-
-        drops[i]->last_pos = drops[i]->pos;
-        drops[i]->pos += 0.5 * drops[i]->vel * delta_t * simulation_steps;
-
-        for (CollisionObject *co : *collision_objects) {
-            if (typeid(*co) == typeid(Plane)) {
-                Plane* p = (Plane*) co;
-                Vector3D pos = Vector3D(0, 0, 0);
-                if (p->collide(*drops[i], pos)) {
-                
-                    
-                    if (drops[i]->pos.x >= 0 && drops[i]->pos.z >= 0) {
-                        double pos_width = drops[i]->pos.z / this->width;
-                        double pos_height = drops[i]->pos.x / this->height;
-                        int rast_width = (int)round(pos_width * sqrt(collisionMapRes));
-                        int rast_height = (int)round(pos_height * sqrt(collisionMapRes));
-                        int map_width = rast_width - (rast_width % (int)sqrt(collisionMapRes));
-                        int map_height = rast_height % (int)sqrt(collisionMapRes);
-                        int index = 3 * ((rast_width * (int)sqrt(collisionMapRes)) + rast_height);
-                        //int index = 3 * ((int(drops[i]->pos.z) * height) + int(drops[i]->pos.x));
-
-                        if (collisionMap[index] < 5) {
-                            collisionMap[index] = 0;
-                            collisionMap[index + 1] = 0;
-                            collisionMap[index + 2] = 0;
-                        }
-                        else {
-                            collisionMap[index] -= 1;
-                            collisionMap[index + 1] -= 1;
-                            collisionMap[index + 2] -= 1;
-                        }
-                    }
-                    
-
-                    // If the droplet collided with the groud, replace it with a new droplet in the sky
-                    double x = (double(rand()) / RAND_MAX - 0.5) * 5;
-                    double y = (double(rand()) / RAND_MAX - 0.5) * sky_midpoint;
-                    double z = (double(rand()) / RAND_MAX - 0.5) * 5;
-                    
-                    drops[i]->pos = Vector3D(x, sky_midpoint + y, z);
-                    drops[i]->vel = Vector3D(0, 0, 0);
-
-                    
-                }             
+            // Correct for terminal velocity, 9 meters per second
+            double speed = sqrt(dot(drops[i]->vel, drops[i]->vel));
+            if (speed > 9.0) {
+                drops[i]->vel = 9.0 * drops[i]->vel / speed;
             }
-            
+
+            drops[i]->last_pos = drops[i]->pos;
+            drops[i]->pos += 0.5 * drops[i]->vel * delta_t;
+
+            for (CollisionObject *co : *collision_objects) {
+                if (typeid(*co) == typeid(Plane)) {
+                    Plane* p = (Plane*) co;
+                    Vector3D pos = Vector3D(0, 0, 0);
+                    if (p->collide(*drops[i], pos)) {
+                    
+                        // check that droplet hits the plane
+                        if (pos.x >= 0 && pos.z >= 0 && pos.x < 8 && pos.z < 8) {
+                            int x_pos = int(width * (8.0 - pos.x) / 8.0);
+                            int z_pos = int(height * pos.z / 8.0);
+
+                            int index = 3 * (z_pos * height + x_pos);
+
+                            if (collisionMap[index] < 5) {
+                                collisionMap[index] = 0;
+                                collisionMap[index + 1] = 0;
+                                collisionMap[index + 2] = 0;
+                            }
+                            else {
+                                collisionMap[index] -= 1;
+                                collisionMap[index + 1] -= 1;
+                                collisionMap[index + 2] -= 1;
+                            }
+                        }
+                        
+
+                        // If the droplet collided with the groud, replace it with a new droplet in the sky
+                        double x = 4 + (double(rand()) / RAND_MAX - 0.5) * 5;
+                        double y = (double(rand()) / RAND_MAX - 0.5) * sky_midpoint;
+                        double z = 4 + (double(rand()) / RAND_MAX - 0.5) * 5;
+                        
+                        drops[i]->pos = Vector3D(x, sky_midpoint + y, z);
+                        drops[i]->vel = Vector3D(0, 0, 0);
+
+                        
+                    }             
+                }
+                
+            }
         }
-             
 
         // Update the sphere
         drops[i]->s->origin = drops[i]->pos;

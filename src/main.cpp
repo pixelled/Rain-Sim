@@ -164,22 +164,24 @@ bool loadObjectsFromFile(string filename, vector<CollisionObject *>* objects, in
   json j;
   i >> j;
 
+  cout << j;
+
   // Loop over objects in scene
   for (json::iterator it = j.begin(); it != j.end(); ++it) {
     string key = it.key();
 
     // Check that object is valid
-    unordered_set<string>::const_iterator query = VALID_KEYS.find(key);
-    if (query == VALID_KEYS.end()) {
-      cout << "Invalid scene object found: " << key << endl;
-      exit(-1);
-    }
+    // unordered_set<string>::const_iterator query = VALID_KEYS.find(key);
+    // if (query == VALID_KEYS.end()) {
+    //   cout << "Invalid scene object found: " << key << endl;
+    //   exit(-1);
+    // }
 
     // Retrieve object
     json object = it.value();
 
     // Parse object depending on type (sphere, plane, or mesh)
-    if (key == SPHERE) {
+    if (key.find(SPHERE) != std::string::npos) {
       Vector3D origin;
       double radius, friction;
 
@@ -336,7 +338,7 @@ int main(int argc, char **argv) {
   if (!file_specified) { // No arguments, default initialization
     std::stringstream def_fname;
     def_fname << project_root;
-    def_fname << "/scene/plane_sphere.json";
+    def_fname << "/scene/plane_sphere_sphere.json";
     file_to_load_from = def_fname.str();
   }
   

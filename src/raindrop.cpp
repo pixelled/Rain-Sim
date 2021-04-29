@@ -18,7 +18,7 @@ Raindrop::Raindrop(double mass, Vector3D pos, Vector3D vel) {
 	this->last_pos = pos;
 	this->vel = vel;
 
-	this->s = new Sphere(pos, 0.03, 0.4, 2, 2);
+	this->s = new Sphere(pos, 0.3, 0.4, 2, 2);
 }
 
 void Raindrop::render(GLShader &shader, RaindropRenderer &raindrop_renderer) {
