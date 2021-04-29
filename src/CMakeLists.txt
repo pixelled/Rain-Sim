@@ -67,12 +67,15 @@ link_directories(
 #-------------------------------------------------------------------------------
 add_executable(clothsim ${CLOTHSIM_VIEWER_SOURCE})
 
+find_package(glm REQUIRED)
+
 target_link_libraries(clothsim
     CGL ${CGL_LIBRARIES}
     nanogui ${NANOGUI_EXTRA_LIBS}
     ${FREETYPE_LIBRARIES}
     ${CMAKE_THREADS_INIT}
 )
+target_link_libraries(clothsim PRIVATE glm::glm)
 
 #-------------------------------------------------------------------------------
 # Platform-specific configurations for target

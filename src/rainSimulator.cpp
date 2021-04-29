@@ -33,7 +33,12 @@ Vector3D load_texture(int frame_idx, GLuint handle, const char *where) {
     size_retval.x = img_x;
     size_retval.y = img_y;
     size_retval.z = img_n;
-    if (frame_idx != 1) glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, img_x, img_y, 0, GL_RGB, GL_UNSIGNED_BYTE, img_data);
+    if (frame_idx != 4) {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, img_x, img_y, 0, GL_RGB, GL_UNSIGNED_BYTE, img_data);
+    }
+    else {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img_x, img_y, 0, GL_RGBA, GL_UNSIGNED_BYTE, img_data);
+    }
     stbi_image_free(img_data);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -83,7 +88,10 @@ void RainSimulator::load_textures() {
     m_gl_texture_1_size = load_texture(1, m_gl_texture_1, (m_project_root + "/textures/texture_1.png").c_str());
     m_gl_texture_2_size = load_texture(2, m_gl_texture_2, (m_project_root + "/textures/texture_2.png").c_str());
     m_gl_texture_3_size = load_texture(3, m_gl_texture_3, (m_project_root + "/textures/uvmap.png").c_str());
-    m_gl_texture_4_size = load_texture(4, m_gl_texture_4, (m_project_root + "/textures/texture_4.png").c_str());
+    m_gl_texture_4_size = load_texture(4, m_gl_texture_4, (m_project_root + "/textures/raindrop.png").c_str());
+
+    // Update raindrop texture size.
+    raindrop_renderer.update_texture_size(m_gl_texture_4_size);
 
     std::cout << "Texture 1 loaded with size: " << m_gl_texture_1_size << std::endl;
     std::cout << "Texture 2 loaded with size: " << m_gl_texture_2_size << std::endl;
@@ -166,21 +174,15 @@ void RainSimulator::load_shaders() {
     for (size_t i = 0; i < shaders.size(); ++i) {
         cout << i << shaders[i].display_name << endl;
         if (shaders[i].display_name == "Ground" && i != GROUND_SHADER_IDX) {
-            UserShader temp = shaders[i];
-            shaders[i] = shaders[GROUND_SHADER_IDX];
-            shaders[GROUND_SHADER_IDX] = temp;
+            swap(shaders[i], shaders[GROUND_SHADER_IDX]);
         } else if (shaders[i].display_name == "Mesh" && i != MESH_SHADER_IDX) {
-            UserShader temp = shaders[i];
-            shaders[i] = shaders[MESH_SHADER_IDX];
-            shaders[MESH_SHADER_IDX] = temp;
+            swap(shaders[i], shaders[MESH_SHADER_IDX]);
         } else if (shaders[i].display_name == "Sphere" && i != SPHERE_SHADER_IDX) {
-            UserShader temp = shaders[i];
-            shaders[i] = shaders[SPHERE_SHADER_IDX];
-            shaders[SPHERE_SHADER_IDX] = temp;
+            swap(shaders[i], shaders[SPHERE_SHADER_IDX]);
         } else if (shaders[i].display_name == "Rain" && i != RAIN_SHADER_IDX) {
-            UserShader temp = shaders[i];
-            shaders[i] = shaders[RAIN_SHADER_IDX];
-            shaders[RAIN_SHADER_IDX] = temp;
+            swap(shaders[i], shaders[RAINDROP_SHADER_IDX]);
+        } else if (shaders[i].display_name == "Raindrop" && i != RAINDROP_SHADER_IDX) {
+            swap(shaders[i], shaders[RAINDROP_SHADER_IDX]);
         }
     }
 
@@ -278,6 +280,25 @@ GLShader &RainSimulator::prepareShader(int index) {
     Matrix4f view = getViewMatrix();
     Matrix4f projection = getProjectionMatrix();
 
+    if (index == RAINDROP_SHADER_IDX) {
+        raindrop_renderer.update_view(view);
+        raindrop_renderer.update_proj(projection, screen_w, screen_h);
+        //raindrop_renderer.initRenderData();
+        GLShader& shader = *active_shader.nanogui_shader;
+        shader.bind();
+
+        // Textures
+        shader.setUniform("u_texture_1_size", Vector2f(m_gl_texture_1_size.x, m_gl_texture_1_size.y), false);
+        shader.setUniform("u_texture_2_size", Vector2f(m_gl_texture_2_size.x, m_gl_texture_2_size.y), false);
+        shader.setUniform("u_texture_3_size", Vector2f(m_gl_texture_3_size.x, m_gl_texture_3_size.y), false);
+        shader.setUniform("u_texture_4_size", Vector2f(m_gl_texture_4_size.x, m_gl_texture_4_size.y), false);
+        shader.setUniform("u_texture_1", 1, false);
+        shader.setUniform("u_texture_2", 2, false);
+        shader.setUniform("u_texture_3", 3, false);
+        shader.setUniform("u_texture_4", 4, false);
+        return shader;
+    }
+
     Matrix4f viewProjection = projection * view;
 
     // Bind the active shader
@@ -344,11 +365,16 @@ void RainSimulator::drawContents() {
     GLShader &shader = prepareShader(MESH_SHADER_IDX);
     drawMesh(shader);
 
-
-    shader = prepareShader(RAIN_SHADER_IDX);
+    //shader = prepareShader(RAIN_SHADER_IDX);
+    shader = prepareShader(RAINDROP_SHADER_IDX);
     for (int i = 0; i < rainSystem->drops.size(); i += 1) {
-        rainSystem->drops[i]->s->render(shader);
+        rainSystem->drops[i]->render(shader, raindrop_renderer);
+        //rainSystem->drops[i]->s->render(shader);
     }
+    shader = prepareShader(RAINDROP_SHADER_IDX);
+    Vector3D pos(0.5, 0.2, 0.5);
+    Vector3D vel(1.0, 1.0, 0.0);
+    raindrop_renderer.render(shader, pos, vel);
 
     // Plane & Sphere
     for (CollisionObject *co : *collision_objects) {

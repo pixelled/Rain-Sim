@@ -16,7 +16,11 @@ enum ShaderTypeHint {
 };
 
 enum ShaderType {
-    GROUND_SHADER_IDX = 0, SPHERE_SHADER_IDX = 1, MESH_SHADER_IDX = 2, RAIN_SHADER_IDX = 3
+    GROUND_SHADER_IDX = 0,
+    SPHERE_SHADER_IDX = 1,
+    MESH_SHADER_IDX = 2,
+    RAIN_SHADER_IDX = 3,
+    RAINDROP_SHADER_IDX = 4,
 };
 
 class RainSimulator {
@@ -159,6 +163,8 @@ private:
     Vector2i default_window_size = Vector2i(1024, 800);
 
     GLShader &prepareShader(int index);
+
+    RaindropRenderer raindrop_renderer;
 };
 
 struct UserShader {
