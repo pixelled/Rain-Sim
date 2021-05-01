@@ -95,8 +95,8 @@ void RaindropRenderer::render(GLShader& shader, Vector3D &position, Vector3D &ve
 	shader.setUniform("model", u_model);
 	shader.setUniform("projection", projection);
 
-	/*glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);*/
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glBindVertexArray(this->quadVAO);
 
 	shader.drawArray(GL_TRIANGLES, 0, 6);

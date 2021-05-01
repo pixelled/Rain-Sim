@@ -365,12 +365,11 @@ void RainSimulator::drawContents() {
     GLShader &shader = prepareShader(MESH_SHADER_IDX);
     drawMesh(shader);
 
-    //shader = prepareShader(RAIN_SHADER_IDX);
     shader = prepareShader(RAINDROP_SHADER_IDX);
     for (int i = 0; i < rainSystem->drops.size(); i += 1) {
         rainSystem->drops[i]->render(shader, raindrop_renderer);
-        //rainSystem->drops[i]->s->render(shader);
     }
+
     shader = prepareShader(RAINDROP_SHADER_IDX);
     Vector3D pos(0.5, 0.2, 0.5);
     Vector3D vel(1.0, 1.0, 0.0);
