@@ -65,17 +65,19 @@ void ParticleSystem::simulate(double frames_per_sec, double simulation_steps, ve
 
                             int index = 3 * (z_pos * height + x_pos);
 
-                            if (collisionMap[index] < 5) {
+                            if (collisionMap[index] <= 10) {
                                 collisionMap[index] = 0;
                                 collisionMap[index + 1] = 0;
                                 collisionMap[index + 2] = 0;
                             }
                             else {
-                                collisionMap[index] -= 1;
-                                collisionMap[index + 1] -= 1;
-                                collisionMap[index + 2] -= 1;
+                                collisionMap[index] -= 10;
+                                collisionMap[index + 1] -= 10;
+                                collisionMap[index + 2] -= 10;
                             }
                         }
+
+
                         
 
                         // If the droplet collided with the groud, replace it with a new droplet in the sky

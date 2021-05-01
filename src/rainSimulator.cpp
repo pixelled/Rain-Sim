@@ -51,7 +51,7 @@ Vector3D load_texture(int frame_idx, GLuint handle, const char *where) {
 
 /* Moves a texture from memory to the GPU. `data` needs to be a RGB char array with 8 bits per
  * channel, 3 channels per pixel, padded to 4-byte boundary, and arranged in a row-major order. */
-void RainSimulator::dyn_texture(int frame_idx, GLuint handle, const char *data, int width, int height) {
+void RainSimulator::dyn_texture(int frame_idx, GLuint handle, const unsigned char *data, int width, int height) {
     glActiveTexture(GL_TEXTURE0 + frame_idx);
     glBindTexture(GL_TEXTURE_2D, handle);
     glPixelStorei(GL_UNPACK_ALIGNMENT, 4);

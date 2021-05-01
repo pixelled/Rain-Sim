@@ -56,7 +56,7 @@ private:
 
     void drawMesh(GLShader &shader);
 
-    static void dyn_texture(int frame_idx, GLuint handle, const char *data, int width, int height);
+    static void dyn_texture(int frame_idx, GLuint handle, const unsigned char *data, int width, int height);
 
     void load_shaders();
 

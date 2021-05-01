@@ -20,4 +20,7 @@ void main() {
 
   vec4 tex = texture(u_texture_3, v_texcoords);
   out_color.a = tex.r;
+  if (out_color.a <= 0.1) {
+    discard;
+  }
 }

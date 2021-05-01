@@ -18,7 +18,7 @@ public:
         this->count = count;
         this->collisionMapRes = width * height;
         wetMap = (char*) calloc((width * height * 3 + 3) / 4 * 4, sizeof(char));
-        collisionMap = (char*)calloc(3 * collisionMapRes, sizeof(char));
+        collisionMap = (unsigned char*)calloc(3 * collisionMapRes, sizeof(unsigned char));
     }
 
     ~ParticleSystem() {
@@ -30,7 +30,7 @@ public:
     void reset();
 
     char* wetMap;
-    char* collisionMap;
+    unsigned char* collisionMap;
     unsigned int width;
     unsigned int height;
     int collisionMapRes;
