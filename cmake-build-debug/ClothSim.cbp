@@ -5,7 +5,7 @@
 		<Option title="ClothSim"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="clang"/>
-		<Option virtualFolders="CMake Files\;CMake Files\CGL\;CMake Files\CGL\src\;CMake Files\ext\;CMake Files\ext\nanogui\;CMake Files\ext\nanogui\ext\;CMake Files\ext\nanogui\ext\glfw\;CMake Files\ext\nanogui\ext\glfw\CMake\;CMake Files\ext\nanogui\ext\glfw\CMake\modules\;CMake Files\ext\nanogui\ext\glfw\src\;CMake Files\src\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\CGL\;CMake Files\CGL\src\;CMake Files\ext\;CMake Files\ext\nanogui\;CMake Files\ext\nanogui\ext\;CMake Files\ext\nanogui\ext\glfw\;CMake Files\ext\nanogui\ext\glfw\CMake\;CMake Files\ext\nanogui\ext\glfw\CMake\modules\;CMake Files\ext\nanogui\ext\glfw\src\;CMake Files\src\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\..\..\..\usr\local\lib\cmake\glm\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/cmake-build-debug"/>
@@ -396,6 +396,7 @@
 					<Add directory="/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/ext/nanogui/ext/glfw/include"/>
 					<Add directory="/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/ext/nanogui/ext/nanovg/src"/>
 					<Add directory="/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/ext/nanogui/ext/eigen"/>
+					<Add directory="/usr/local/lib"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
@@ -429,6 +430,7 @@
 					<Add directory="/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/ext/nanogui/ext/glfw/include"/>
 					<Add directory="/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/ext/nanogui/ext/nanovg/src"/>
 					<Add directory="/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/ext/nanogui/ext/eigen"/>
+					<Add directory="/usr/local/lib"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
@@ -955,6 +957,12 @@
 		<Unit filename="/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/rainSimulator.h">
 			<Option target="clothsim"/>
 		</Unit>
+		<Unit filename="/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/raindrop.cpp">
+			<Option target="clothsim"/>
+		</Unit>
+		<Unit filename="/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/raindrop.h">
+			<Option target="clothsim"/>
+		</Unit>
 		<Unit filename="/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
@@ -987,6 +995,12 @@
 		</Unit>
 		<Unit filename="/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/../../../../../../../../usr/local/lib/cmake/glm/glmConfig-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\local\lib\cmake\glm\"/>
+		</Unit>
+		<Unit filename="/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/../../../../../../../../usr/local/lib/cmake/glm/glmConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\local\lib\cmake\glm\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

@@ -1280,6 +1280,24 @@ nanogui/nanogui.h
 ../mesh.h
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/mesh.h
 
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/collision/plane.h
+nanogui/nanogui.h
+-
+../mesh.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/mesh.h
+collisionObject.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/collision/collisionObject.h
+../raindrop.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/raindrop.h
+
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/collision/sphere.h
+../mesh.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/mesh.h
+../misc/sphere_drawing.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/sphere_drawing.h
+collisionObject.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/collision/collisionObject.h
+
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/mesh.h
 vector
 -
@@ -1287,6 +1305,14 @@ CGL/CGL.h
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/CGL/CGL.h
 vertex.h
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/vertex.h
+
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/sphere_drawing.h
+vector
+-
+nanogui/nanogui.h
+-
+CGL/CGL.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/CGL/CGL.h
 
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/particleSystem.cpp
 particleSystem.h
@@ -1297,8 +1323,24 @@ vector
 -
 CGL/CGL.h
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/CGL/CGL.h
+raindrop.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/raindrop.h
 collision/collisionObject.h
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/collision/collisionObject.h
+collision/plane.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/collision/plane.h
+
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/raindrop.h
+CGL/CGL.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/CGL/CGL.h
+CGL/vector3D.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/CGL/vector3D.h
+collision/sphere.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/collision/sphere.h
+glm/glm.hpp
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/glm/glm.hpp
+glm/gtc/matrix_transform.hpp
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/glm/gtc/matrix_transform.hpp
 
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/vertex.h
 CGL/CGL.h

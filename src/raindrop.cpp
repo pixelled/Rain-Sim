@@ -18,7 +18,7 @@ Raindrop::Raindrop(double mass, Vector3D pos, Vector3D vel) {
 	this->last_pos = pos;
 	this->vel = vel;
 
-	this->s = new Sphere(pos, 0.3, 0.4, 2, 2);
+	this->s = new Sphere(pos, 0.3, false, 0.4, 2, 2);
 }
 
 void Raindrop::render(GLShader &shader, RaindropRenderer &raindrop_renderer) {
@@ -92,8 +92,8 @@ void RaindropRenderer::render(GLShader& shader, Vector3D &position, Vector3D &ve
 		}
 	}
 
-	shader.setUniform("model", u_model);
-	shader.setUniform("projection", projection);
+	shader.setUniform("u_model", u_model);
+	shader.setUniform("u_view_projection", projection);
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

@@ -47,7 +47,7 @@ void Plane::render(GLShader &shader) {
     MatrixXf positions(3, 4);
     MatrixXf normals(3, 4);
     MatrixXf texcoords(2, 4);
-
+    MatrixXf tangents(3, 4);
 
     positions.col(0) << sPoint + 8 * Vector3f(1.0, 0.0, 1.0);
     positions.col(1) << sPoint + 8 * Vector3f(0.0, 0.0, 1.0); 
@@ -64,6 +64,11 @@ void Plane::render(GLShader &shader) {
     texcoords.col(2) << bottomleft;
     texcoords.col(3) << bottomright;
 
+    tangents.col(0) << Vector3f(1, 0, 0);
+    tangents.col(1) << Vector3f(1, 0, 0);
+    tangents.col(2) << Vector3f(1, 0, 0);
+    tangents.col(3) << Vector3f(1, 0, 0);
+
     if (shader.uniform("u_color", false) != -1) {
         shader.setUniform("u_color", color);
     }
@@ -71,7 +76,10 @@ void Plane::render(GLShader &shader) {
     if (shader.attrib("in_normal", false) != -1) {
         shader.uploadAttrib("in_normal", normals);
     }
-    shader.uploadAttrib("in_texcoords", texcoords);
+    if (shader.attrib("in_tangent", false) != -1) {
+        shader.uploadAttrib("in_tangent", tangents);
+    }
+    shader.uploadAttrib("in_uv", texcoords);
 
     shader.drawArray(GL_TRIANGLE_STRIP, 0, 4);
 }

@@ -5,13 +5,14 @@
     "friction": 0.5
   },
   "sphere": {
-    "origin": [3.5, 0.2, 1.5],
-    "radius": 0.2,
+    "origin": [3.5, 0.7, 5],
+    "radius": 0.75,
     "friction": 0.3
   },
   "sphere1": {
-    "origin": [3.5, -0.2, 1.5],
-    "radius": 0.2,
+    "origin": [3.5, -0.7, 5],
+    "radius": 0.75,
+    "is_reflected": true,
     "friction": 0.3
   }
 }

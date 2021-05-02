@@ -1,0 +1,704 @@
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+Detecting CXX compiler ABI info failed to compile with the following output:
+Change Dir: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_71d38/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_71d38.dir/build.make CMakeFiles/cmTC_71d38.dir/build
+Building CXX object CMakeFiles/cmTC_71d38.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++    -o CMakeFiles/cmTC_71d38.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.18.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+make[1]: *** [CMakeFiles/cmTC_71d38.dir/CMakeCXXCompilerABI.cpp.o] Error 72
+make: *** [cmTC_71d38/fast] Error 2
+
+
+
+
+Determining if the CXX compiler works failed with the following output:
+Change Dir: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b37a3/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_b37a3.dir/build.make CMakeFiles/cmTC_b37a3.dir/build
+Building CXX object CMakeFiles/cmTC_b37a3.dir/testCXXCompiler.cxx.o
+/usr/bin/c++    -o CMakeFiles/cmTC_b37a3.dir/testCXXCompiler.cxx.o -c "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/CMakeFiles/CMakeTmp/testCXXCompiler.cxx"
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+make[1]: *** [CMakeFiles/cmTC_b37a3.dir/testCXXCompiler.cxx.o] Error 72
+make: *** [cmTC_b37a3/fast] Error 2
+
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+Detecting CXX compiler ABI info failed to compile with the following output:
+Change Dir: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8d4d6/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_8d4d6.dir/build.make CMakeFiles/cmTC_8d4d6.dir/build
+Building CXX object CMakeFiles/cmTC_8d4d6.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++    -o CMakeFiles/cmTC_8d4d6.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.18.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+make[1]: *** [CMakeFiles/cmTC_8d4d6.dir/CMakeCXXCompilerABI.cpp.o] Error 72
+make: *** [cmTC_8d4d6/fast] Error 2
+
+
+
+
+Determining if the CXX compiler works failed with the following output:
+Change Dir: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a5712/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_a5712.dir/build.make CMakeFiles/cmTC_a5712.dir/build
+Building CXX object CMakeFiles/cmTC_a5712.dir/testCXXCompiler.cxx.o
+/usr/bin/c++    -o CMakeFiles/cmTC_a5712.dir/testCXXCompiler.cxx.o -c "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/CMakeFiles/CMakeTmp/testCXXCompiler.cxx"
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+make[1]: *** [CMakeFiles/cmTC_a5712.dir/testCXXCompiler.cxx.o] Error 72
+make: *** [cmTC_a5712/fast] Error 2
+
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+Detecting CXX compiler ABI info failed to compile with the following output:
+Change Dir: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_23421/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_23421.dir/build.make CMakeFiles/cmTC_23421.dir/build
+Building CXX object CMakeFiles/cmTC_23421.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++    -o CMakeFiles/cmTC_23421.dir/CMakeCXXCompilerABI.cpp.o -c /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.19/Modules/CMakeCXXCompilerABI.cpp
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+make[1]: *** [CMakeFiles/cmTC_23421.dir/CMakeCXXCompilerABI.cpp.o] Error 72
+make: *** [cmTC_23421/fast] Error 2
+
+
+
+
+Determining if the CXX compiler works failed with the following output:
+Change Dir: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_09e16/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_09e16.dir/build.make CMakeFiles/cmTC_09e16.dir/build
+Building CXX object CMakeFiles/cmTC_09e16.dir/testCXXCompiler.cxx.o
+/usr/bin/c++    -o CMakeFiles/cmTC_09e16.dir/testCXXCompiler.cxx.o -c "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/CMakeFiles/CMakeTmp/testCXXCompiler.cxx"
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+make[1]: *** [CMakeFiles/cmTC_09e16.dir/testCXXCompiler.cxx.o] Error 72
+make: *** [cmTC_09e16/fast] Error 2
+
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+Detecting CXX compiler ABI info failed to compile with the following output:
+Change Dir: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1bd6f/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_1bd6f.dir/build.make CMakeFiles/cmTC_1bd6f.dir/build
+Building CXX object CMakeFiles/cmTC_1bd6f.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++    -o CMakeFiles/cmTC_1bd6f.dir/CMakeCXXCompilerABI.cpp.o -c /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.19/Modules/CMakeCXXCompilerABI.cpp
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+make[1]: *** [CMakeFiles/cmTC_1bd6f.dir/CMakeCXXCompilerABI.cpp.o] Error 72
+make: *** [cmTC_1bd6f/fast] Error 2
+
+
+
+
+Determining if the CXX compiler works failed with the following output:
+Change Dir: /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_44a46/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_44a46.dir/build.make CMakeFiles/cmTC_44a46.dir/build
+Building CXX object CMakeFiles/cmTC_44a46.dir/testCXXCompiler.cxx.o
+/usr/bin/c++    -o CMakeFiles/cmTC_44a46.dir/testCXXCompiler.cxx.o -c "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/CMakeFiles/CMakeTmp/testCXXCompiler.cxx"
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+make[1]: *** [CMakeFiles/cmTC_44a46.dir/testCXXCompiler.cxx.o] Error 72
+make: *** [cmTC_44a46/fast] Error 2
+
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+72
+c++: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find clang++ 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcode-select: Failed to locate 'clang++', requesting installation of command line developer tools.
+
+

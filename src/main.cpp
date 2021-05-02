@@ -184,6 +184,7 @@ bool loadObjectsFromFile(string filename, vector<CollisionObject *>* objects, in
     if (key.find(SPHERE) != std::string::npos) {
       Vector3D origin;
       double radius, friction;
+      bool is_reflected;
 
       auto it_origin = object.find("origin");
       if (it_origin != object.end()) {
@@ -207,7 +208,14 @@ bool loadObjectsFromFile(string filename, vector<CollisionObject *>* objects, in
         incompleteObjectError("sphere", "friction");
       }
 
-      Sphere *s = new Sphere(origin, radius, friction, sphere_num_lat, sphere_num_lon);
+      auto it_is_reflected = object.find("is_reflected");
+      if (it_is_reflected != object.end()) {
+        is_reflected = *it_is_reflected;
+      } else {
+        is_reflected = false;
+      }
+
+      Sphere *s = new Sphere(origin, radius, is_reflected, friction, sphere_num_lat, sphere_num_lon);
       objects->push_back(s);
     } else if (key == PLANE) { // PLANE
       Vector3D point, normal;
@@ -244,7 +252,7 @@ bool loadObjectsFromFile(string filename, vector<CollisionObject *>* objects, in
   }
 
   i.close();
-  
+
   return true;
 }
 
@@ -253,13 +261,13 @@ bool is_valid_project_root(const std::string& search_path) {
     ss << search_path;
     ss << "/";
     ss << "shaders/Default.vert";
-    
+
     return FileUtils::file_exists(ss.str());
 }
 
 // Attempt to locate the project root automatically
 bool find_project_root(const std::vector<std::string>& search_paths, std::string& retval) {
-  
+
   for (std::string search_path : search_paths) {
     if (is_valid_project_root(search_path)) {
       retval = search_path;
@@ -279,17 +287,17 @@ int main(int argc, char **argv) {
   };
   std::string project_root;
   bool found_project_root = find_project_root(search_paths, project_root);
-  
+
   vector<CollisionObject *> objects;
-  
+
   int c;
-  
+
   int sphere_num_lat = 40;
   int sphere_num_lon = 40;
-  
+
   std::string file_to_load_from;
   bool file_specified = false;
-  
+
   while ((c = getopt (argc, argv, "f:r:a:o:")) != -1) {
     switch (c) {
       case 'f': {
@@ -327,7 +335,7 @@ int main(int argc, char **argv) {
       }
     }
   }
-  
+
   if (!found_project_root) {
     std::cout << "Error: Could not find required file \"shaders/Default.vert\" anywhere!" << std::endl;
     return -1;
@@ -341,7 +349,7 @@ int main(int argc, char **argv) {
     def_fname << "/scene/plane_sphere_sphere.json";
     file_to_load_from = def_fname.str();
   }
-  
+
   bool success = loadObjectsFromFile(file_to_load_from, &objects, sphere_num_lat, sphere_num_lon);
   if (!success) {
     std::cout << "Warn: Unable to load from file: " << file_to_load_from << std::endl;

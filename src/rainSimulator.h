@@ -18,9 +18,11 @@ enum ShaderTypeHint {
 enum ShaderType {
     GROUND_SHADER_IDX = 0,
     SPHERE_SHADER_IDX = 1,
-    MESH_SHADER_IDX = 2,
-    RAIN_SHADER_IDX = 3,
-    RAINDROP_SHADER_IDX = 4,
+    SPHERE_REF_SHADER_IDX = 2,
+    MESH_SHADER_IDX = 3,
+    MESH_REF_SHADER_IDX = 4,
+    RAIN_SHADER_IDX = 5,
+    RAINDROP_SHADER_IDX = 6,
 };
 
 class RainSimulator {
@@ -103,10 +105,18 @@ private:
     Vector3D m_gl_texture_2_size;
     Vector3D m_gl_texture_3_size;
     Vector3D m_gl_texture_4_size;
+    Vector3D m_gl_texture_5_size;
+    Vector3D m_gl_texture_6_size;
+    Vector3D m_gl_texture_7_size;
+    Vector3D m_gl_texture_8_size;
     GLuint m_gl_texture_1;
     GLuint m_gl_texture_2;
     GLuint m_gl_texture_3;
     GLuint m_gl_texture_4;
+    GLuint m_gl_texture_5;
+    GLuint m_gl_texture_6;
+    GLuint m_gl_texture_7;
+    GLuint m_gl_texture_8;
     GLuint m_gl_cubemap_tex;
 
     // OpenGL customizable inputs

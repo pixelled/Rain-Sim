@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/sphere_drawing.cpp" "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/cmake-build-debug/src/CMakeFiles/clothsim.dir/misc/sphere_drawing.cpp.o"
   "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/particleSystem.cpp" "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/cmake-build-debug/src/CMakeFiles/clothsim.dir/particleSystem.cpp.o"
   "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/rainSimulator.cpp" "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/cmake-build-debug/src/CMakeFiles/clothsim.dir/rainSimulator.cpp.o"
+  "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/raindrop.cpp" "/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/cmake-build-debug/src/CMakeFiles/clothsim.dir/raindrop.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 
@@ -34,6 +35,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../ext/nanogui/ext/glfw/include"
   "../ext/nanogui/ext/nanovg/src"
   "../ext/nanogui/ext/eigen"
+  "/usr/local/lib"
   )
 
 # Targets to which this target links.
