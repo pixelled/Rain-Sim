@@ -60,10 +60,12 @@ void ParticleSystem::simulate(double frames_per_sec, double simulation_steps, ve
                     
                         // check that droplet hits the plane
                         if (pos.x >= 0 && pos.z >= 0 && pos.x < 8 && pos.z < 8) {
-                            int x_pos = int(width * (8.0 - pos.x) / 8.0);
-                            int z_pos = int(height * pos.z / 8.0);
+ 
+                            double x_pos = width * pos.x / 8.0;
+                            double z_pos = height * pos.z / 8.0;
 
-                            int index = 3 * (z_pos * height + x_pos);
+                            int index = round(3 * (z_pos * height + x_pos));
+
 
                             if (collisionMap[index] <= 10) {
                                 collisionMap[index] = 0;
@@ -76,9 +78,6 @@ void ParticleSystem::simulate(double frames_per_sec, double simulation_steps, ve
                                 collisionMap[index + 2] -= 10;
                             }
                         }
-
-
-                        
 
                         // If the droplet collided with the groud, replace it with a new droplet in the sky
                         double x = 4 + (double(rand()) / RAND_MAX - 0.5) * 5;

@@ -36,10 +36,11 @@ void Plane::render(GLShader &shader) {
     Vector3f sNormal(normal.x, normal.y, normal.z);
     Vector3f sParallel(normal.y - normal.z, normal.z - normal.x,
                        normal.x - normal.y);
-    Vector2f bottomleft(0.0, 0.0);
+
+    Vector2f topright(1.0, 1.0);
     Vector2f topleft(0.0, 1.0);
     Vector2f bottomright(1.0, 0.0);
-    Vector2f topright(1.0, 1.0);
+    Vector2f bottomleft(0.0, 0.0);  
 
     sParallel.normalize();
     Vector3f sCross = sNormal.cross(sParallel);
@@ -51,7 +52,7 @@ void Plane::render(GLShader &shader) {
 
     positions.col(0) << sPoint + 8 * Vector3f(1.0, 0.0, 1.0);
     positions.col(1) << sPoint + 8 * Vector3f(0.0, 0.0, 1.0); 
-    positions.col(2) << sPoint + 8 * Vector3f(1.0, 0, 0);
+    positions.col(2) << sPoint + 8 * Vector3f(1.0, 0.0, 0.0);
     positions.col(3) << sPoint;
 
     normals.col(0) << sNormal;
@@ -59,10 +60,10 @@ void Plane::render(GLShader &shader) {
     normals.col(2) << sNormal;
     normals.col(3) << sNormal;
 
-    texcoords.col(0) << topleft;
-    texcoords.col(1) << topright;
-    texcoords.col(2) << bottomleft;
-    texcoords.col(3) << bottomright;
+    texcoords.col(0) << topright;
+    texcoords.col(1) << topleft;    
+    texcoords.col(2) << bottomright;
+    texcoords.col(3) << bottomleft;
 
     tangents.col(0) << Vector3f(1, 0, 0);
     tangents.col(1) << Vector3f(1, 0, 0);

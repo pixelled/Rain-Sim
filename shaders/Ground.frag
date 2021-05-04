@@ -2,14 +2,14 @@
 
 
 uniform vec3 u_cam_pos;
-uniform vec2 u_texture_5_size;
+uniform vec2 u_texture_3_size;
 uniform vec2 u_texture_6_size;
 
 uniform vec3 u_light_pos;
 uniform vec3 u_light_intensity;
 
 uniform samplerCube u_texture_cubemap;
-uniform sampler2D u_texture_5;
+uniform sampler2D u_texture_3;
 uniform sampler2D u_texture_6;
 
 in vec4 v_position;
@@ -24,7 +24,7 @@ void main() {
     vec3 n = normalize(vec3(v_normal));
     vec3 t = normalize(vec3(v_tangent));
     mat3 TBN = mat3(t, cross(n, t), n);
-    float curr_h = texture(u_texture_5, v_uv).b;
+    float curr_h = texture(u_texture_3, v_uv).b;
 
     const float height_scaling = 50.0;
     const vec3 color = vec3(0.5, 0.5, 0.5);
@@ -32,8 +32,8 @@ void main() {
     const float height_cutoff = 0.5;
     float wetness = curr_h < height_cutoff ? (texture(u_texture_6, v_uv)).b * 1.2 : 0;
 
-    float d_u = (texture(u_texture_5, v_uv + vec2(1.0 / u_texture_5_size.x, 0.0)).b - curr_h) * height_scaling;
-    float d_v = (texture(u_texture_5, v_uv + vec2(0.0, 1.0 / u_texture_5_size.y)).b - curr_h) * height_scaling;
+    float d_u = (texture(u_texture_3, v_uv + vec2(1.0 / u_texture_3_size.x, 0.0)).b - curr_h) * height_scaling;
+    float d_v = (texture(u_texture_3, v_uv + vec2(0.0, 1.0 / u_texture_3_size.y)).b - curr_h) * height_scaling;
     vec3 nd = normalize(TBN * vec3(-d_u * max(1 - wetness * 2, 0), max(0, -d_v * max(1 - wetness * 2, 0)), 1));
 
     const int p = 80;
