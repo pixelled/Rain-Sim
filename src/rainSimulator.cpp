@@ -27,18 +27,19 @@ Vector3D load_texture(int frame_idx, GLuint handle, const char *where) {
     glActiveTexture(GL_TEXTURE0 + frame_idx);
     glBindTexture(GL_TEXTURE_2D, handle);
 
-
+    unsigned char* img_data;
     int img_x, img_y, img_n;
-    unsigned char *img_data = stbi_load(where, &img_x, &img_y, &img_n, 3);
-    size_retval.x = img_x;
-    size_retval.y = img_y;
-    size_retval.z = img_n;
     if (frame_idx != 4) {
+        img_data = stbi_load(where, &img_x, &img_y, &img_n, 3);
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, img_x, img_y, 0, GL_RGB, GL_UNSIGNED_BYTE, img_data);
     }
     else {
+        img_data = stbi_load(where, &img_x, &img_y, &img_n, STBI_rgb_alpha);
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img_x, img_y, 0, GL_RGBA, GL_UNSIGNED_BYTE, img_data);
     }
+    size_retval.x = img_x;
+    size_retval.y = img_y;
+    size_retval.z = img_n;
     stbi_image_free(img_data);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
