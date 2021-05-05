@@ -1,13 +1,11 @@
+#ifndef CLOTHSIM_PARTICLE_SYS_H
+#define CLOTHSIM_PARTICLE_SYS_H
+
 #include <vector>
 #include "CGL/CGL.h"
 #include "raindrop.h"
 #include "collision/collisionObject.h"
 #include "collision/plane.h"
-
-
-#ifndef CLOTHSIM_PARTICLESYSTEM_H
-#define CLOTHSIM_PARTICLESYSTEM_H
-
 
 class ParticleSystem {
 public:
@@ -15,16 +13,20 @@ public:
         this->width = width;
         this->height = height;
         this->wind_f = Vector3D(0, 0, 0);
+        this->velocity = TERMINAL_V;
         this->count = count;
         this->collisionMapRes = width * height;
-        wetMap = (char*) calloc((width * height * 3 + 3) / 4 * 4, sizeof(char));
-        collisionMap = (unsigned char*)calloc(3 * collisionMapRes, sizeof(unsigned char));
+        wetMap = (char*) calloc((width * height + 3) / 4 * 4, sizeof(char));
+        collisionMap = (unsigned char*)calloc((collisionMapRes + 3) / 4 * 4, sizeof(unsigned char));
     }
 
     ~ParticleSystem() {
         free(wetMap);
         free(collisionMap);
     }
+
+    const Vector3D TERMINAL_V = Vector3D(0, -7, 0);
+    const double SKY_MIDPOINT = 10.0;
 
     void init_raindrops();
     void reset();
@@ -35,10 +37,11 @@ public:
     unsigned int height;
     int collisionMapRes;
     int count;
+    Vector3D velocity;
     Vector3D wind_f;
-    double sky_midpoint;
 
     void updateWind(Vector3D wind_f);
+    inline Vector3D calculateHit(double x, double y, double z) const;
 
     void simulate(double frames_per_sec, double simulation_steps,
                   vector<Vector3D> external_accelerations,
@@ -53,4 +56,4 @@ public:
 };
 
 
-#endif //CLOTHSIM_PARTICLESYSTEM_H
+#endif //CLOTHSIM_PARTICLE_SYS_H

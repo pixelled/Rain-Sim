@@ -12,14 +12,14 @@
 
 using namespace nanogui;
 
-Raindrop::Raindrop(double mass, Vector3D pos, Vector3D vel) {
-	this->mass = mass;
+Raindrop::Raindrop(Vector3D pos, Vector3D hit) {
 	this->pos = pos;
-	this->last_pos = pos;
-	this->vel = vel;
+	this->hit = hit;
 
 	this->s = new Sphere(pos, 0.3, false, 0.4, 2, 2);
 }
+
+Vector3D Raindrop::vel = Vector3D(0, 0, 0);
 
 void Raindrop::render(GLShader &shader, RaindropRenderer &raindrop_renderer) {
 	raindrop_renderer.render(shader, pos, vel);
@@ -73,10 +73,10 @@ void RaindropRenderer::initRenderData() {
 
 void RaindropRenderer::render(GLShader& shader, Vector3D &position, Vector3D &velocity) {
 	Vector4f pos(position.x, position.y, position.z, 1.0);
-	Vector4f vel(velocity.x, velocity.y, velocity.z, 1.0);
+//	Vector4f vel(velocity.x, velocity.y, velocity.z, 1.0);
 	// Derive positions in view space
 	pos = view * pos;
-	vel = view * vel;
+//	vel = view * vel;
 
 	// u_model maps quad coordinates into view space
 	glm::mat4 model = glm::mat4(1.0f);

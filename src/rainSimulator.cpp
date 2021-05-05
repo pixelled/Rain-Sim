@@ -50,9 +50,18 @@ Vector3D load_texture(int frame_idx, GLuint handle, const char *where) {
     return size_retval;
 }
 
+/* Moves a texture from memory to the GPU. `data` needs to be a monochrome char array with 8 bits
+ * per pixel, padded to 4-byte boundary, and arranged in a row-major order. */
+void RainSimulator::dyn_texture(int frame_idx, GLuint handle, const unsigned char *data, int width, int height) {
+    glActiveTexture(GL_TEXTURE0 + frame_idx);
+    glBindTexture(GL_TEXTURE_2D, handle);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, width, height, 0, GL_RED, GL_UNSIGNED_BYTE, data);
+}
+
 /* Moves a texture from memory to the GPU. `data` needs to be a RGB char array with 8 bits per
  * channel, 3 channels per pixel, padded to 4-byte boundary, and arranged in a row-major order. */
-void RainSimulator::dyn_texture(int frame_idx, GLuint handle, const unsigned char *data, int width, int height) {
+void RainSimulator::dyn_texture_rgb(int frame_idx, GLuint handle, const unsigned char *data, int width, int height) {
     glActiveTexture(GL_TEXTURE0 + frame_idx);
     glBindTexture(GL_TEXTURE_2D, handle);
     glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
@@ -201,7 +210,7 @@ void RainSimulator::load_shaders() {
                 (temp_shaders[i].display_name == "SphereReflected" && j == SPHERE_REF_SHADER_IDX) ||
                 (temp_shaders[i].display_name == "Rain" && j == RAIN_SHADER_IDX) ||
                 (temp_shaders[i].display_name == "Raindrop" && j == RAINDROP_SHADER_IDX)) {
-                cout << j << temp_shaders[i].display_name << endl;
+//                cout << j << temp_shaders[i].display_name << endl;
                 shaders.push_back(temp_shaders[i]);
                 break;
             }
@@ -254,7 +263,7 @@ void RainSimulator::init() {
 
     // Initialize particle system
     //rainSystem = new ParticleSystem(128, 128, 100);
-    rainSystem = new ParticleSystem(50, 50, 10); 
+    rainSystem = new ParticleSystem(64, 64, 2000);
     rainSystem->init_raindrops();
 
     // Initialize camera
@@ -423,8 +432,9 @@ void RainSimulator::drawContents() {
     // The plane
     for (CollisionObject *co : *collision_objects) {
         if (typeid(*co) == typeid(Plane)) {
-            dyn_texture(1, m_gl_texture_3, rainSystem->collisionMap, rainSystem->width, rainSystem->height);
+            //cout << rainSystem->width << "," << rainSystem->height << "; " << rainSystem->collisionMapRes << endl;
             shader = prepareShader(GROUND_SHADER_IDX);
+            dyn_texture(3, m_gl_texture_3, rainSystem->collisionMap, rainSystem->width, rainSystem->height);
             glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             co->render(shader);
@@ -704,7 +714,7 @@ void RainSimulator::initGUI(Screen *screen) {
 
     // Gravity
 
-    new Label(window, "Gravity", "sans-bold");
+    /*new Label(window, "Gravity", "sans-bold");
 
     {
         Widget *panel = new Widget(window);
@@ -746,7 +756,7 @@ void RainSimulator::initGUI(Screen *screen) {
         fb->setUnits("m/s^2");
         fb->setSpinnable(true);
         fb->setCallback([this](float value) { gravity.z = value; });
-    }
+    }*/
 
     // Wind
 

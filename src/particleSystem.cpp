@@ -1,31 +1,72 @@
 #include "particleSystem.h"
 
 void ParticleSystem::init_raindrops() {
-    drops = vector<Raindrop*>();
-    sky_midpoint = 10.0;
+    drops = vector<Raindrop *>();
 
-    for (int i = 0; i < 500; i += 1) {
-        double x = 4 + (double(rand()) / RAND_MAX - 0.5) * 5;
-        double y = (double(rand()) / RAND_MAX - 0.5) * sky_midpoint;
-        double z = 4 + (double(rand()) / RAND_MAX - 0.5) * 5;
-        
-        drops.push_back(new Raindrop(1.0, Vector3D(x, sky_midpoint + y, z), Vector3D(0, 0, 0)));
+    for (int i = 0; i < this->count; i += 1) {
+        double x = 4 + (double(rand()) / RAND_MAX - 0.5) * 10;
+        double y = (double(rand()) / RAND_MAX - 0.5) * SKY_MIDPOINT + SKY_MIDPOINT;
+        double z = 4 + (double(rand()) / RAND_MAX - 0.5) * 10;
+
+        drops.push_back(new Raindrop(Vector3D(x, y, z), calculateHit(x, y, z)));
+//        cout << "birth " << Vector3D(x, y, z) << ", hit " << calculateHit(x, y, z) << endl;
     }
 
-    for (int i = 0; i < 3 * collisionMapRes; i += 1) {
-        this->collisionMap[i] = 255;
-    }
+    Raindrop::vel = velocity;
 }
 
 void ParticleSystem::reset() {
 
 }
 
+inline Vector3D ParticleSystem::calculateHit(double x, double y, double z) const {
+    return Vector3D(x, y, z) - this->velocity * (y / this->velocity.y);
+}
+
 void ParticleSystem::updateWind(Vector3D wind_f) {
     this->wind_f = wind_f;
+    this->velocity = TERMINAL_V + wind_f;
 }
 
 void ParticleSystem::simulate(double frames_per_sec, double simulation_steps, vector<Vector3D> external_accelerations,
+                              vector<CollisionObject *> *collision_objects) {
+    double delta_t = 1.0f / frames_per_sec / simulation_steps;
+
+    // this is assuming all drops are terminal velocity by default
+    for (int i = 0; i < drops.size(); i += 1) {
+        for (int j = 0; j < simulation_steps; j += 1) {
+            drops[i]->pos += this->velocity * delta_t;
+            // if the droplet hasn't yet reached the ground, skip to next step
+            if (drops[i]->pos.y > 0) continue;
+            Vector3D &hit = drops[i]->hit;
+            if (hit.x >= 0 && hit.z >= 0 && hit.x < 8 && hit.z < 8) {
+                int hit_row = (int) round(hit.z / 8.0 * width);
+                int hit_col = (int) round(hit.x / 8.0 * height);
+                int index = hit_row * height + hit_col;
+
+                if (collisionMap[index] >= 205) {
+                    collisionMap[index] = 255;
+                } else {
+                    collisionMap[index] += 50;
+                }
+            }
+
+            // If the droplet collided with the ground, replace it with a new droplet in the sky
+            double x = 4 + (double(rand()) / RAND_MAX - 0.5) * 10;
+            double y = (double(rand()) / RAND_MAX - 0.5) * SKY_MIDPOINT + SKY_MIDPOINT;
+            double z = 4 + (double(rand()) / RAND_MAX - 0.5) * 10;
+
+            drops[i]->pos = Vector3D(x, y, z);
+            drops[i]->hit = calculateHit(x, y, z);
+//            cout << "birth " << Vector3D(x, y, z) << ", hit " << calculateHit(x, y, z) << endl;
+        }
+
+        // Update the sphere
+        drops[i]->s->origin = drops[i]->pos;
+    }
+}
+
+/*void ParticleSystem::simulate(double frames_per_sec, double simulation_steps, vector<Vector3D> external_accelerations,
                               vector<CollisionObject *> *collision_objects) {
     double delta_t = 1.0f / frames_per_sec / simulation_steps;
 
@@ -98,3 +139,4 @@ void ParticleSystem::simulate(double frames_per_sec, double simulation_steps, ve
         drops[i]->s->origin = drops[i]->pos;
     }
 }
+*/

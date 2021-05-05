@@ -164,7 +164,7 @@ bool loadObjectsFromFile(string filename, vector<CollisionObject *>* objects, in
   json j;
   i >> j;
 
-  cout << j;
+  //cout << j;
 
   // Loop over objects in scene
   for (json::iterator it = j.begin(); it != j.end(); ++it) {
@@ -376,7 +376,7 @@ int main(int argc, char **argv) {
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
 
-    glClearColor(0.25f, 0.25f, 0.25f, 1.0f);
+    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     app->drawContents();

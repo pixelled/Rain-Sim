@@ -59,6 +59,7 @@ private:
     void drawMesh(GLShader &shader);
 
     static void dyn_texture(int frame_idx, GLuint handle, const unsigned char *data, int width, int height);
+    static void dyn_texture_rgb(int frame_idx, GLuint handle, const unsigned char *data, int width, int height);
 
     void load_shaders();
 
@@ -81,11 +82,11 @@ private:
 
     // Default simulation values
 
-    int frames_per_sec = 90;
-    int simulation_steps = 30;
+    int frames_per_sec = 60;
+    int simulation_steps = 1;
 
     CGL::Vector3D gravity = CGL::Vector3D(0, -9.8, 0);
-    CGL::Vector3D wind = CGL::Vector3D(2.0, 0, 2.0);
+    CGL::Vector3D wind = CGL::Vector3D(0.2, 0, 0.2);
     int t = 0; // counter for drawContents
 
     nanogui::Color color = nanogui::Color(1.0f, 1.0f, 1.0f, 1.0f);
@@ -188,4 +189,4 @@ struct UserShader {
 
 };
 
-#endif // CGL_RAIN_SIM_H
+#endif // CGL_RAIN_SIMULATOR_H
