@@ -28,9 +28,50 @@ void ParticleSystem::updateWind(Vector3D wind_f) {
     this->velocity = TERMINAL_V + wind_f;
 }
 
+/* does a box blur pass on the map */
+void ParticleSystem::blur() {
+    unsigned char *in, *out;
+    in = collisionMap;
+    out = (unsigned char*) malloc(sizeof(unsigned char) * width * height);
+
+    int w = width, h = height;
+    // kernel: [1 m 1]
+    const int m = 14;
+    float fac = 1.f / (float) (2 + m);
+#pragma omp parallel
+    {
+#pragma omp for
+        for (int i = 0; i < h; i++) {
+            int offset = i * w;
+            out[offset] = (unsigned char) round(fac * (m * in[offset] + in[offset + 1]));
+            for (int j = 1; j < w - 1; j++) {
+                out[offset + j] = (unsigned char) round(
+                        fac * (in[offset + j - 1] + m * in[offset + j] + in[offset + j + 1]));
+            }
+            out[offset + w - 1] = (unsigned char) round(
+                    fac * (m * in[offset + w - 1] + in[offset + w - 2]));
+        }
+#pragma omp for
+        // TODO: simd this
+        for (int i = 0; i < width; i++) {
+            int offset = i;
+            in[offset] = (unsigned char) round(fac * (m * out[offset] + out[offset + w]));
+            for (int j = 1; j < height - 1; j++) {
+                in[offset + j * w] = (unsigned char) round(
+                        fac * (out[offset + (j - 1) * w] + m * out[offset + j * w] + out[offset + (j + 1) * w]));
+            }
+            in[offset + (h - 1) * w] = (unsigned char) round(
+                    fac * (m * out[offset + (h - 1) * w] + out[offset + (h - 2) * w]));
+        }
+    }
+    free(out);
+}
+
 void ParticleSystem::simulate(double frames_per_sec, double simulation_steps, vector<Vector3D> external_accelerations,
                               vector<CollisionObject *> *collision_objects) {
     double delta_t = 1.0f / frames_per_sec / simulation_steps;
+
+    if ((float) rand() / RAND_MAX < delta_t * 10) blur();
 
     // this is assuming all drops are terminal velocity by default
     for (int i = 0; i < drops.size(); i += 1) {

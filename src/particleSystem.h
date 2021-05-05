@@ -53,6 +53,8 @@ public:
 
     // Spatial hashing
     unordered_map<float, vector<Raindrop *>*> map;
+
+    void blur();
 };
 
 
