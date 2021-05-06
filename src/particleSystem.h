@@ -47,14 +47,16 @@ public:
                   vector<Vector3D> external_accelerations,
                   vector<CollisionObject *> *collision_objects);
 
-    vector<Raindrop> raindrops;
+    void blur();
+    void load_splash_renderer(SplashRenderer *sr);
 
+    vector<Raindrop> raindrops;
     vector<Raindrop*> drops;
 
     // Spatial hashing
     unordered_map<float, vector<Raindrop *>*> map;
 
-    void blur();
+    SplashRenderer* splash_renderer;
 };
 
 

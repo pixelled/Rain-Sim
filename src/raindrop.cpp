@@ -90,11 +90,47 @@ void RaindropRenderer::render(GLShader& shader, Vector3D& position, Vector3D& ve
 		}
 	}
 
+	float dist = (position - Vector3D(4.0, 4.0, 4.0)).norm();
+	shader.setUniform("opacity", clamp(dist / 5.0, 0.0, 1.0));
+
 	/*shader.setUniform("view", view);*/
 	shader.setUniform("u_model", u_model);
 	glBindVertexArray(this->quadVAO);
 
 	shader.drawArray(GL_TRIANGLES, 0, 6);
+	glBindVertexArray(0);
+}
+
+SplashRenderer::SplashRenderer(int num_frames) {
+	end_idx = num_frames - 1;
+}
+
+void SplashRenderer::initRenderData() {
+	unsigned int VBO;
+	len_x = size_x / (end_idx + 1);
+	len_y = size_y;
+	cout << len_x << " " << len_y;
+	float vertices[] = {
+		// pos      // tex
+		-0.5f, 0.5f, 0.0f, 0.0f,
+		0.5f, -0.5f, len_x, len_y,
+		-0.5f, -0.5f, 0.0f, len_y,
+
+		-0.5f, 0.5f, 0.0f, 0.0f,
+		0.5f, 0.5f, len_x, 0.0f,
+		0.5f, -0.5f, len_x, len_y
+	};
+
+	glGenVertexArrays(1, &this->quadVAO);
+	glGenBuffers(1, &VBO);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+	glBindVertexArray(this->quadVAO);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 }
 
@@ -108,9 +144,9 @@ void SplashRenderer::render(GLShader& shader, SplashInfo &s) {
 
 	// u_model maps quad coordinates into view space
 	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::translate(model, glm::vec3(pos(0), pos(1), pos(2)));
-	//model = glm::rotate(model, (float)atan(velocity.y / velocity.x), glm::vec3(0.0f, 0.0f, 1.0f));
-	//model = glm::scale(model, glm::vec3(glm::vec2(0.1, 0.1), 1.0f));
+	model = glm::translate(model, glm::vec3(pos(0), pos(1) + 0.05, pos(2)));
+	/*model = glm::rotate(model, (float)atan(velocity.y / velocity.x), glm::vec3(0.0f, 0.0f, 1.0f));*/
+	model = glm::scale(model, glm::vec3(glm::vec2(0.1, 0.1), 1.0f));
 
 	// Change back to eigen matrix
 	Matrix4f u_model;
@@ -120,21 +156,25 @@ void SplashRenderer::render(GLShader& shader, SplashInfo &s) {
 		}
 	}
 
-	//shader.uploadAttrib("offset_x", s.idx * size_y);
-
+	Vector2f offset = Vector2f(s.idx * len_x, 0.0);
+	shader.setUniform("u_offset", offset);
 	shader.setUniform("u_model", u_model);
 	glBindVertexArray(this->quadVAO);
+
+	/*glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_DST_ALPHA);*/
 
 	shader.drawArray(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);
 }
 
-void SplashRenderer::render_all(GLShader& shader) {
+void SplashRenderer::render_all(GLShader& shader, bool is_paused) {
 	int c = 0;
 	for (SplashInfo &s : splashes) {
-		if (s.idx == end_idx) {
+		if (s.idx == end_idx)
 			c++;
-		}
+		if (!is_paused)
+			s.idx += 1;
 		SplashRenderer::render(shader, s);
 	}
 	for (int i = 0; i < c; i++) {

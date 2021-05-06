@@ -50,13 +50,17 @@ struct SplashInfo {
 
 class SplashRenderer : public SpriteRenderer {
 public:
-	using SpriteRenderer::SpriteRenderer;
+	SplashRenderer(int num_frames=20);
+
+	void initRenderData();
 
 	void render(GLShader& shader, SplashInfo &s);
-	void render_all(GLShader& shader);
+	void render_all(GLShader& shader, bool is_paused);
 	void add_splash(Vector3D& position);
 	deque<SplashInfo> splashes;
 	unsigned int end_idx;
+	float len_x;
+	float len_y;
 };
 
 #endif // CLOTHSIM_RAINDROP_H

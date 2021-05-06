@@ -23,6 +23,7 @@ enum ShaderType {
     MESH_REF_SHADER_IDX = 4,
     RAIN_SHADER_IDX = 5,
     RAINDROP_SHADER_IDX = 6,
+    SPLASH_SHADER_IDX = 7,
 };
 
 class RainSimulator {
@@ -176,6 +177,7 @@ private:
     GLShader &prepareShader(int index);
 
     RaindropRenderer raindrop_renderer;
+    SplashRenderer splash_renderer;
 };
 
 struct UserShader {
