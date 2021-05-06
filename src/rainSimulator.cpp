@@ -105,7 +105,7 @@ void RainSimulator::load_textures() {
     m_gl_texture_4_size = load_texture(4, m_gl_texture_4, (m_project_root + "/textures/raindrop.png").c_str());
     m_gl_texture_5_size = load_texture(5, m_gl_texture_5, (m_project_root + "/textures/ground_bump.png").c_str());
     m_gl_texture_6_size = load_texture(6, m_gl_texture_6, (m_project_root + "/textures/fake_wetmap.png").c_str());
-    m_gl_texture_7_size = load_texture(7, m_gl_texture_7, (m_project_root + "/textures/texture_1.png").c_str());
+    m_gl_texture_7_size = load_texture(7, m_gl_texture_7, (m_project_root + "/textures/splash.png").c_str());
     m_gl_texture_8_size = load_texture(8, m_gl_texture_8, (m_project_root + "/textures/texture_1.png").c_str());
 
     // Update raindrop texture size.
@@ -320,8 +320,7 @@ GLShader &RainSimulator::prepareShader(int index) {
 
     if (index == RAINDROP_SHADER_IDX) {
         raindrop_renderer.update_view(view);
-        raindrop_renderer.update_proj(projection, screen_w, screen_h);
-        //raindrop_renderer.initRenderData();
+        shader.setUniform("u_view_projection", projection);
 
         // Textures
         shader.setUniform("u_texture_4_size", Vector2f(m_gl_texture_4_size.x, m_gl_texture_4_size.y), false);
@@ -407,7 +406,7 @@ void RainSimulator::drawContents() {
 
     shader = prepareShader(RAINDROP_SHADER_IDX);
     Vector3D pos(0.5, 0.2, 0.5);
-    Vector3D vel(1.0, 1.0, 0.0);
+    Vector3D vel(0.0, 1.0, 0.0);
     raindrop_renderer.render(shader, pos, vel);
 
     glEnable(GL_BLEND);

@@ -17,7 +17,7 @@ public:
         this->count = count;
         this->collisionMapRes = width * height;
         wetMap = (char*) calloc((width * height + 3) / 4 * 4, sizeof(char));
-        collisionMap = (unsigned char*)calloc((collisionMapRes + 3) / 4 * 4, sizeof(unsigned char));
+        collisionMap = (unsigned char*)calloc((collisionMapRes + 16) / 4 * 4, sizeof(unsigned char));
     }
 
     ~ParticleSystem() {

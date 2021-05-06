@@ -25,26 +25,15 @@ void Raindrop::render(GLShader &shader, RaindropRenderer &raindrop_renderer) {
 	raindrop_renderer.render(shader, pos, vel);
 }
 
-RaindropRenderer::RaindropRenderer() {
+SpriteRenderer::SpriteRenderer() {
 	initRenderData();
 }
 
-void RaindropRenderer::update_view(Matrix4f& view) {
+void SpriteRenderer::update_view(Matrix4f& view) {
 	this->view = view;
 }
 
-void RaindropRenderer::update_proj(Matrix4f &projection, float screen_w, float screen_h) {
-	this->projection = projection;
-	this->screen_w = screen_w;
-	this->screen_h = screen_h;
-}
-
-void RaindropRenderer::update_texture_size(Vector3D &texture_size) {
-	size_x = texture_size.x;
-	size_y = texture_size.y;
-}
-
-void RaindropRenderer::initRenderData() {
+void SpriteRenderer::initRenderData() {
 	/* Reference: https://learnopengl.com/In-Practice/2D-Game/Rendering-Sprites */
 	unsigned int VBO;
 	float vertices[] = {
@@ -71,18 +60,27 @@ void RaindropRenderer::initRenderData() {
 	glBindVertexArray(0);
 }
 
-void RaindropRenderer::render(GLShader& shader, Vector3D &position, Vector3D &velocity) {
+void SpriteRenderer::update_texture_size(Vector3D& texture_size) {
+	size_x = texture_size.x;
+	size_y = texture_size.y;
+}
+
+void RaindropRenderer::render(GLShader& shader, Vector3D& position, Vector3D& velocity) {
 	Vector4f pos(position.x, position.y, position.z, 1.0);
-//	Vector4f vel(velocity.x, velocity.y, velocity.z, 1.0);
+	Vector4f vel(velocity.x, velocity.y, velocity.z, 1.0);
 	// Derive positions in view space
 	pos = view * pos;
-//	vel = view * vel;
+	vel = view * vel;
+	Vector4f origin = view * Vector4f(0.0, 0.0, 0.0, 1.0);
+	vel = vel - origin;
 
 	// u_model maps quad coordinates into view space
 	glm::mat4 model = glm::mat4(1.0f);
 	model = glm::translate(model, glm::vec3(pos(0), pos(1), pos(2)));
-	model = glm::rotate(model, (float)atan(velocity.y / velocity.x), glm::vec3(0.0f, 0.0f, 1.0f));
-	model = glm::scale(model, glm::vec3(glm::vec2(0.1, 0.1), 1.0f));
+	model = glm::rotate(model, (float)atan(vel(0) / vel(1)), glm::vec3(0.0f, 0.0f, 1.0f));
+	float scale = sqrt(sqrt(vel(0) * vel(0) + vel(1) * vel(1))) * 0.05;
+	
+	model = glm::scale(model, glm::vec3(glm::vec2(scale, scale), 1.0f));
 
 	// Change back to eigen matrix
 	Matrix4f u_model;
@@ -92,13 +90,54 @@ void RaindropRenderer::render(GLShader& shader, Vector3D &position, Vector3D &ve
 		}
 	}
 
+	/*shader.setUniform("view", view);*/
 	shader.setUniform("u_model", u_model);
-	shader.setUniform("u_view_projection", projection);
-
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glBindVertexArray(this->quadVAO);
 
 	shader.drawArray(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);
+}
+
+void SplashRenderer::add_splash(Vector3D& position) {
+	splashes.emplace_back(Vector4f(position.x, position.y, position.z, 1.0), 0);
+}
+
+void SplashRenderer::render(GLShader& shader, SplashInfo &s) {
+	// Derive positions in view space
+	Vector4f pos = view * s.pos;
+
+	// u_model maps quad coordinates into view space
+	glm::mat4 model = glm::mat4(1.0f);
+	model = glm::translate(model, glm::vec3(pos(0), pos(1), pos(2)));
+	//model = glm::rotate(model, (float)atan(velocity.y / velocity.x), glm::vec3(0.0f, 0.0f, 1.0f));
+	//model = glm::scale(model, glm::vec3(glm::vec2(0.1, 0.1), 1.0f));
+
+	// Change back to eigen matrix
+	Matrix4f u_model;
+	for (size_t i = 0; i < 4; ++i) {
+		for (size_t j = 0; j < 4; ++j) {
+			u_model(i, j) = model[j][i];
+		}
+	}
+
+	//shader.uploadAttrib("offset_x", s.idx * size_y);
+
+	shader.setUniform("u_model", u_model);
+	glBindVertexArray(this->quadVAO);
+
+	shader.drawArray(GL_TRIANGLES, 0, 6);
+	glBindVertexArray(0);
+}
+
+void SplashRenderer::render_all(GLShader& shader) {
+	int c = 0;
+	for (SplashInfo &s : splashes) {
+		if (s.idx == end_idx) {
+			c++;
+		}
+		SplashRenderer::render(shader, s);
+	}
+	for (int i = 0; i < c; i++) {
+		splashes.pop_front();
+	}
 }
