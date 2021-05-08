@@ -146,8 +146,9 @@ void SphereMesh::draw_sphere(GLShader &shader, const Vector3D &p, double r) {
   Matrix4f model;
   model << r, 0, 0, p.x, 0, r, 0, p.y, 0, 0, r, p.z, 0, 0, 0, 1;
 
-  shader.setUniform("u_model", model);
-
+  if (shader.uniform("u_model", false) != -1) {
+     shader.setUniform("u_model", model);
+  }
 
   shader.uploadAttrib("in_position", positions);
   if (shader.attrib("in_normal", false) != -1) {
@@ -161,6 +162,10 @@ void SphereMesh::draw_sphere(GLShader &shader, const Vector3D &p, double r) {
   }
 
   shader.drawArray(GL_TRIANGLES, 0, sphere_num_indices);
+  shader.freeAttrib("in_position");
+  shader.freeAttrib("in_normal");
+  shader.freeAttrib("in_uv");
+  shader.freeAttrib("in_tangent");
 }
 
 } // namespace Misc

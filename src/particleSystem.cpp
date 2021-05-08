@@ -32,11 +32,11 @@ void ParticleSystem::updateWind(Vector3D wind_f) {
 void ParticleSystem::blur() {
     unsigned char *in, *out;
     in = collisionMap;
-    out = (unsigned char*) malloc(sizeof(unsigned char) * width * height);
+    out = (unsigned char*) malloc(sizeof(unsigned char) * (width * height + 103) /4 * 4);
 
     int w = width, h = height;
     // kernel: [1 m 1]
-    const int m = 14;
+    const int m = 22;
     float fac = 1.f / (float) (2 + m);
 #pragma omp parallel
     {
@@ -65,10 +65,18 @@ void ParticleSystem::blur() {
         }
     }
     free(out);
+
+    // take a 3-row sample of the average color as the rain level
+    float sum;
+    for (int i = 1; i < 4; i++) {
+        for (int j = 1; j < height - 1; j++) {
+            sum += in[i * w + j];
+        }
+    }
+    level = sum / (3.f * (float) h - 6.f);
 }
 
-void ParticleSystem::load_splash_renderer(SplashRenderer* sr)
-{
+void ParticleSystem::load_splash_renderer(SplashRenderer* sr) {
     splash_renderer = sr;
 }
 
@@ -85,8 +93,8 @@ void ParticleSystem::simulate(double frames_per_sec, double simulation_steps, ve
             // if the droplet hasn't yet reached the ground, skip to next step
             if (drops[i]->pos.y > 0) continue;
             Vector3D &hit = drops[i]->hit;
-            splash_renderer->add_splash(hit);
             if (hit.x >= 0 && hit.z >= 0 && hit.x < 8 && hit.z < 8) {
+                splash_renderer->add_splash(hit);
                 int hit_row = (int) round(hit.z / 8.0 * width);
                 int hit_col = (int) round(hit.x / 8.0 * height);
                 int index = hit_row * height + hit_col;

@@ -17,7 +17,7 @@ public:
         this->count = count;
         this->collisionMapRes = width * height;
         wetMap = (char*) calloc((width * height + 3) / 4 * 4, sizeof(char));
-        collisionMap = (unsigned char*)calloc((collisionMapRes + 16) / 4 * 4, sizeof(unsigned char));
+        collisionMap = (unsigned char*) calloc((collisionMapRes + 103) / 4 * 4, sizeof(unsigned char));
     }
 
     ~ParticleSystem() {
@@ -37,6 +37,7 @@ public:
     unsigned int height;
     int collisionMapRes;
     int count;
+    float level;
     Vector3D velocity;
     Vector3D wind_f;
 

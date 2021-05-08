@@ -80,7 +80,13 @@ void Plane::render(GLShader &shader) {
     if (shader.attrib("in_tangent", false) != -1) {
         shader.uploadAttrib("in_tangent", tangents);
     }
-    shader.uploadAttrib("in_uv", texcoords);
+    if (shader.attrib("in_uv", false) != -1) {
+        shader.uploadAttrib("in_uv", texcoords);
+    }
 
     shader.drawArray(GL_TRIANGLE_STRIP, 0, 4);
+    shader.freeAttrib("in_position");
+    shader.freeAttrib("in_normal");
+    shader.freeAttrib("in_uv");
+    shader.freeAttrib("in_tangent");
 }

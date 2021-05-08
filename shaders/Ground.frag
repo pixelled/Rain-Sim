@@ -7,6 +7,7 @@ uniform vec2 u_texture_3_size;
 
 uniform vec3 u_light_pos;
 uniform vec3 u_light_intensity;
+uniform vec4 u_color;
 
 uniform float avg_color;
 
@@ -28,10 +29,12 @@ void main() {
     float curr_h = texture(u_texture_5, v_uv).r;
 
     const float height_scaling = 50.0;
-    const vec3 color = vec3(0.3, 0.3, 0.3);
+    vec3 color = vec3(0.3f, 0.3f, 0.3f);
 
-    const float height_cutoff = 0.5;
-    float wetness = curr_h < height_cutoff ? (texture(u_texture_3, v_uv)).r * 1.2 : 0;
+    float height_cutoff = min(1.f, 0.3f + 0.75f * avg_color);
+//    float height_cutoff = 0.5f;
+    float wetness_raw = (texture(u_texture_3, v_uv)).r;
+    float wetness = curr_h < height_cutoff ? wetness_raw * 1.2 : 0;
 
     float d_u = (texture(u_texture_5, v_uv + vec2(1.0 / u_texture_5_size.x, 0.0)).r - curr_h) * height_scaling;
     float d_v = (texture(u_texture_5, v_uv + vec2(0.0, 1.0 / u_texture_5_size.y)).r - curr_h) * height_scaling;
@@ -57,10 +60,10 @@ void main() {
 
     I *= shadow_factor;
     vec3 diffuse = I * vec3(color) * max(0.f, dot(nd, l)) * (1 - wetness - base_wetness) * diffuse_brightness;
-    vec3 specular = I * pow(max(0.f, dot(nd, h)), p) * (wetness + base_wetness) * specular_brightness;
+    vec3 specular = I * pow(max(0.f, dot(nd, h)), p) * (wetness_raw + base_wetness) * specular_brightness;
 
     vec3 wo = normalize(u_cam_pos - vec3(v_position));
-    vec3 environment = vec3(texture(u_texture_cubemap, vec3(-wo.x, wo.y, -wo.z))) * wetness * 1.5;
+    vec3 environment = vec3(texture(u_texture_cubemap, vec3(-wo.x, wo.y, -wo.z))) * wetness * 1.2;
 
     float alpha = max(0, 1 - wetness) + (specular.r + environment.r) * 0.2 + 0.15;
 

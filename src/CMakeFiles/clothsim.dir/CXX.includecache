@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/camera.h
+iostream
+-
+CGL/matrix3x3.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/CGL/matrix3x3.h
+misc/camera_info.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/camera_info.h
+math.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/math.h
+
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/collision/collisionObject.h
 nanogui/nanogui.h
 -
@@ -38,6 +48,24 @@ CGL/CGL.h
 vertex.h
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/vertex.h
 
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/camera_info.h
+collada_info.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/collada_info.h
+
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/collada_info.h
+string
+-
+vector
+-
+CGL/matrix4x4.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/CGL/matrix4x4.h
+
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/file_utils.h
+set
+-
+string
+-
+
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/sphere_drawing.h
 vector
 -
@@ -46,9 +74,37 @@ nanogui/nanogui.h
 CGL/CGL.h
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/CGL/CGL.h
 
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/particleSystem.cpp
-particleSystem.h
-/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/particleSystem.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/stb_image.h
+stb_image.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/stb_image.h
+stdio.h
+-
+stdlib.h
+-
+stdarg.h
+-
+stddef.h
+-
+stdlib.h
+-
+string.h
+-
+limits.h
+-
+math.h
+-
+stdio.h
+-
+assert.h
+-
+stdint.h
+-
+emmintrin.h
+-
+intrin.h
+-
+arm_neon.h
+-
 
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/particleSystem.h
 vector
@@ -62,6 +118,42 @@ collision/collisionObject.h
 collision/plane.h
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/collision/plane.h
 
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/rainSimulator.cpp
+cmath
+-
+glad/glad.h
+-
+CGL/vector3D.h
+-
+nanogui/nanogui.h
+-
+rainSimulator.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/rainSimulator.h
+camera.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/camera.h
+collision/plane.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/collision/plane.h
+collision/sphere.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/collision/sphere.h
+misc/camera_info.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/camera_info.h
+misc/file_utils.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/file_utils.h
+misc/stb_image.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/misc/stb_image.h
+
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/rainSimulator.h
+nanogui/nanogui.h
+-
+memory
+-
+camera.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/camera.h
+particleSystem.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/particleSystem.h
+collision/collisionObject.h
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/collision/collisionObject.h
+
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/raindrop.h
 CGL/CGL.h
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/CGL/CGL.h
@@ -73,6 +165,8 @@ glm/glm.hpp
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/glm/glm.hpp
 glm/gtc/matrix_transform.hpp
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/glm/gtc/matrix_transform.hpp
+deque
+/Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/deque
 
 /Users/richard/Library/Mobile Documents/com~apple~CloudDocs/Academics/CS184/pf/src/vertex.h
 CGL/CGL.h
@@ -1182,6 +1276,22 @@ CGL/include/CGL/CGL.h
 misc.h
 CGL/include/CGL/misc.h
 
+CGL/include/CGL/matrix3x3.h
+CGL.h
+CGL/include/CGL/CGL.h
+vector3D.h
+CGL/include/CGL/vector3D.h
+iosfwd
+-
+
+CGL/include/CGL/matrix4x4.h
+CGL.h
+CGL/include/CGL/CGL.h
+vector4D.h
+CGL/include/CGL/vector4D.h
+iosfwd
+-
+
 CGL/include/CGL/misc.h
 cmath
 -
@@ -1193,6 +1303,16 @@ algorithm
 CGL/include/CGL/vector3D.h
 CGL.h
 CGL/include/CGL/CGL.h
+ostream
+-
+cmath
+-
+
+CGL/include/CGL/vector4D.h
+CGL.h
+CGL/include/CGL/CGL.h
+vector3D.h
+CGL/include/CGL/vector3D.h
 ostream
 -
 cmath

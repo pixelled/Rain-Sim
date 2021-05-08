@@ -8,10 +8,10 @@ uniform float opacity;
 
 void main() {
   vec4 color = texture(u_texture_4, v_texcoords);
-  if (color.a <= 0.1) {
+  float alpha = color.a * opacity;
+  if (alpha <= 0.1) {
   	discard;
   } else {
-  color.a = color.a - opacity;
-  out_color = color;
+    out_color = color * vec4(1, 1, 1, alpha);
   }
 }
