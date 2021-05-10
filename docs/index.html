@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Arvo&family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="styles.css" />
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 </head>
 
@@ -23,21 +24,34 @@
   </div>
 
   <div class="container container-report">
-    <h3 align="center">Report</h3>
-    <p>So far we created a simple scene with rain falling on a dry ground and rain splashes. The scene consists of a plane representing the ground and a sphere to highlight the reflectance of water on the ground. The rain system is initalized with 100 raindrop particles that are uniformly randomly positioned with mean 10 meters above to ground. Each raindrop was modeled as low resolution sphere meshes with a special rain shader (currently uses phong shading). Raindrops are also effect by a wind force and their velocity is capped by a terminal velocity of 9 meters per second. Once a raindrop hits the ground it is reinitalized in the sky above and the texture of the ground is dynamically updated to display an effect on the ground. Right now this effect is to change the alpha value of the ground. The ground has a mirror shader to reflect the surrounding enviroment.</p>
-    <p>Here are some snapshots of our simulation thus far. From the results the rain seems to fall very quickly, even with termial velocity set, so it is hard to view individual raindrops fall. Also since the shading on the raindrops is currenlty just phong shading which makes the droplets look grey instead of like water. Additionally, since the underlying mesh for the rain is a low resolution sphere, the rain looks like round specks and elongated water droplets. The code for updating the opacity is still in the works and it currently effects a random part of the ground mesh.</p>
+    <h3 align="center">Abstract</h3>
+    <p></p>
 
-    <table>
-      <tr>
-        <td><img src="img/init_sim.png" width=800></td>
-      </tr>
-      <tr>
-        <td><img src="img/rain_fall.png" width=800></td>
-     </tr>
-    </table>
+    <h3 align="center">Technical Approach and Results</h3>
+    <h4 align="center">Rain Appearance</h4>
+    <p>We render raindrops with a raindrop-shaped texture but without a raindrop-shaped mesh. At first, we tried to render raindrops based on <a href="index.html#ref">Real-time Rain Simulation</a>, which draw raindrops as point sprites in the screen space. While the appearance of raindrops looks good from a horizontal perspective, it keeps its elliptical shape and doesn't change the orientation of textures when viewing from a vertical perspective.</p>
+    <p>To achieve more realistic effects, we first bind each raindrop a \(1 \times 1\) quad lying on xy plane, with texture coordinates binded with its four vertices. However, the raindrop texture would not be visible with a single quad if viewing from the cross section of the quad. To ensure the raindrop keeps its appearance correct when viewing different perspectives, We convert the quad coordinates into a space with its x axis aligned with view space's x axis and its y axis aligned with the direction of the raindrop's velocity in view space. This ensures the texture always faces the camera in view space. Finally, we perform transformations into view space and projection space as usual. In addition, the opacity of each raindrop changes based on their distance from the camera to make the rainy scene more realistic. Below is a video showing how raindrops change their shapes in different perspectives.</p>
+    <video width="800" controls>
+      <source src="img/raindrops.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
 
-    <p>We are currently behind on our schedule. One issue is that simulating 500 raindrops at a time causes lag. The current fix of reducing the number of simulated particles works well enough for our small scene, but will need a more robust fix when we want to make a bigger scene with more features such as lighitng, streak blurring, or a more detailed enviroment. Another issue is that updating the texture map for the ground has proven to be difficult and the current effect is far off the effect that we want.</p>
-    <p>Most of the tasks in the fourth week are things that we think will look nice and are stretch goals. If necessary we can use that week to as a buffer if the dynamic update of the ground texture proves to be more difficult.</p>
+    <h4 align="center">Raindrop Splashes</h4>
+    <p>We render splashes as an animation with each frame sampled from the textures below. The texture incorporates a single filmed high-quality milk drop splash sequence (referenced from <a href="index.html#ref">Artist-Directable Real-Time Rain Rendering in City Environments</a>). Everytime a raindrop collides with the ground, a splash is generated at the collision point with its size randomized to mitigate visual repetition of the same splash textures. We also change the opacity of splashes based on the wetness degree of the ground to trick viewers that no splashes seem to be on the dry ground. </p>
+    <p>Each splash is rendered as a point splash in the screen space. To do this in OPENGL, we bind a \(1 \times 1\) quad to the splash and translate it to the colliding position in view space. The texture coordinates is rotated based on the normal of the collision point and scaled based on the splash size. Finally, apply projection transformation as usual. Below is a video that shows a closer look at splashes.</p>
+    <video width="800" controls>
+      <source src="img/splashes.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+
+    <h3 align="center" id="ref">References</h3>
+    <p><a href="https://link.springer.com/chapter/10.1007/11686699_63">Real-time Rain Simulation</a></p>
+    <p><a href="http://developer.amd.com/wordpress/media/2012/10/Tatarchuk-Isidoro-Rain%28EGWNph06%29.pdf">Artist-Directable Real-Time Rain Rendering in City Environments</a></p>
+    <h3 align="center" id="ref">Contributions</h3>
+    <p>Richard Yan: </p>
+    <p>Qingyuan Liu: Implemented rendering of raindrops, animation systems for splashes and dynamic painting; Optimized particle simulation for performance; Setup the particle system.</p>
+    <p>Sher Shah: </p>
+    <p>Joie Zhou: </p>
   </div>
 
   <div class="container container-video">
@@ -47,12 +61,6 @@
     Your browser does not support the video tag.
     </video>
   </div>
-
-  <div class="container container-slides">
-    <h3 align="center">Presentation</h3>
-    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQE-onCths0XnBZlqL55xWXWA0pbpzNdRHwBsNAQ0fLzxC799fjUIjAZyCI-kQDTPYEZRxyxmewZN5D/embed?start=false&loop=true&delayms=30000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-  </div>
-  
 
 </body>
 </html>

@@ -143,7 +143,8 @@ void SplashRenderer::initRenderData() {
 }
 
 void SplashRenderer::add_splash(Vector3D& position) {
-	splashes.emplace_back(Vector4f(position.x, position.y, position.z, 1.0), 0);
+	float scale = (float)rand() / (float)RAND_MAX * 0.05 + 0.05;
+	splashes.emplace_back(Vector4f(position.x, position.y, position.z, 1.0), 0, scale);
 }
 
 void SplashRenderer::render(GLShader& shader, SplashInfo &s) {
@@ -152,9 +153,9 @@ void SplashRenderer::render(GLShader& shader, SplashInfo &s) {
 
 	// u_model maps quad coordinates into view space
 	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::translate(model, glm::vec3(pos(0), pos(1) + 0.05, pos(2)));
+	model = glm::translate(model, glm::vec3(pos(0), pos(1) + s.scale - 0.03, pos(2)));
 	/*model = glm::rotate(model, (float)atan(velocity.y / velocity.x), glm::vec3(0.0f, 0.0f, 1.0f));*/
-	model = glm::scale(model, glm::vec3(glm::vec2(0.1, 0.1), 1.0f));
+	model = glm::scale(model, glm::vec3(glm::vec2(s.scale, s.scale), 1.0f));
 
 	// Change back to eigen matrix
 	Matrix4f u_model;
@@ -179,10 +180,10 @@ void SplashRenderer::render(GLShader& shader, SplashInfo &s) {
 void SplashRenderer::render_all(GLShader& shader, bool is_paused) {
 	int c = 0;
 	for (SplashInfo &s : splashes) {
-		if (s.idx >= end_idx - 4)
+		if (s.idx >= end_idx)
 			c++;
 		if (!is_paused)
-			s.idx += 4;
+			s.idx += 2;
         glEnable(GL_BLEND);
         glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ZERO, GL_ONE);
         SplashRenderer::render(shader, s);
