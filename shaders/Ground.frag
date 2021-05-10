@@ -65,7 +65,7 @@ void main() {
     vec3 wo = normalize(u_cam_pos - vec3(v_position));
     vec3 environment = vec3(texture(u_texture_cubemap, vec3(-wo.x, wo.y, -wo.z))) * wetness * 1.2;
 
-    float alpha = max(0, 1 - wetness) + (specular.r + environment.r) * 0.2 + 0.15;
+    float alpha = max(0, 1 - wetness) + (specular.r + environment.r) * 0.15 + 0.1;
 
     out_color = vec4(ambient + diffuse + specular + environment, alpha);
 }

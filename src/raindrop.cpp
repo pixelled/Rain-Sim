@@ -36,15 +36,17 @@ void SpriteRenderer::update_view(Matrix4f& view) {
 void SpriteRenderer::initRenderData() {
 	/* Reference: https://learnopengl.com/In-Practice/2D-Game/Rendering-Sprites */
 	unsigned int VBO;
+	float x = 0.1;
+	float y = 0.2;
 	float vertices[] = {
 		// pos      // tex
-		-0.5f, 0.5f, 0.0f, 1.0f,
-		0.5f, -0.5f, 1.0f, 0.0f,
-		-0.5f, -0.5f, 0.0f, 0.0f,
+		-x, y, 0.0f, 1.0f,
+		x, -y, 1.0f, 0.0f,
+		-x, -y, 0.0f, 0.0f,
 
-		-0.5f, 0.5f, 0.0f, 1.0f,
-		0.5f, 0.5f, 1.0f, 1.0f,
-		0.5f, -0.5f, 1.0f, 0.0f
+		-x, y, 0.0f, 1.0f,
+		x, y, 1.0f, 1.0f,
+		x, -y, 1.0f, 0.0f
 	};
 
 	glGenVertexArrays(1, &this->quadVAO);
@@ -73,15 +75,17 @@ void RaindropRenderer::render(GLShader& shader, Vector3D& position, Vector3D& ve
 	vel = view * vel;
 	Vector4f origin = view * Vector4f(0.0, 0.0, 0.0, 1.0);
 	vel = vel - origin;
+	// Rotation matrix in raindrop space
+	Matrix4f m;
+	Vector4f x = view * Vector4f(1.0, 0.0, 0.0, 1.0) - origin;
+	Vector3D y(-vel(0), -vel(1), -vel(2));
+	y.normalize();
+	Vector3D z = cross(Vector3D(x(0), x(1), x(2)), y);
+	m << x(0), y.x, z.x, 0, x(1), y.y, z.y, 0, x(2), y.z, z.z, 0, 0, 0, 0, 1;
 
 	// u_model maps quad coordinates into view space
 	glm::mat4 model = glm::mat4(1.0f);
 	model = glm::translate(model, glm::vec3(pos(0), pos(1), pos(2)));
-	model = glm::rotate(model, (float)atan(vel(0) / vel(1)), glm::vec3(0.0f, 0.0f, 1.0f));
-	float scale = sqrt(sqrt(vel(0) * vel(0) + vel(1) * vel(1))) * 0.05;
-	
-	model = glm::scale(model, glm::vec3(glm::vec2(scale, scale), 1.0f));
-
 	// Change back to eigen matrix
 	Matrix4f u_model;
 	for (size_t i = 0; i < 4; ++i) {
@@ -97,6 +101,7 @@ void RaindropRenderer::render(GLShader& shader, Vector3D& position, Vector3D& ve
 	shader.setUniform("opacity", clamp(5.f / dist, 0.f, 1.f));
 
 	/*shader.setUniform("view", view);*/
+	shader.setUniform("u_rotate", m);
 	shader.setUniform("u_model", u_model);
 	glBindVertexArray(this->quadVAO);
 

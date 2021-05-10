@@ -24,6 +24,7 @@ enum ShaderType {
     RAIN_SHADER_IDX = 5,
     RAINDROP_SHADER_IDX = 6,
     SPLASH_SHADER_IDX = 7,
+    SCREENSPACE_SHADER_IDX = 8
 };
 
 class RainSimulator {
