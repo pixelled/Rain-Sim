@@ -18,7 +18,8 @@ void main() {
   if (alpha <= 0.1) {
   	discard;
   } else {
-  vec3 v_n = normalize(2.0 * texture(u_texture_9, v_texcoords).rgb - 1.0);
+  //vec3 v_n = normalize(2.0 * texture(u_texture_9, v_texcoords).rgb - 1.0);
+  vec3 v_n = vec3(0.0, 1.0, 0.0);
   float ambientStrength = 0.1;
   vec3 lightDir = normalize(u_light_pos.xyz - v_position.xyz); 
     

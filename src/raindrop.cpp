@@ -72,6 +72,7 @@ void RaindropRenderer::render(GLShader& shader, Vector3D& position, Vector3D& ve
 	Vector4f vel(velocity.x, velocity.y, velocity.z, 1.0);
 	// Derive positions in view space
 	pos = view * pos;
+	shader.setUniform("view_position", pos);
 	vel = view * vel;
 	Vector4f origin = view * Vector4f(0.0, 0.0, 0.0, 1.0);
 	vel = vel - origin;
@@ -99,6 +100,7 @@ void RaindropRenderer::render(GLShader& shader, Vector3D& position, Vector3D& ve
 
     float dist = -pos(2); //(position - Vector3D(4.0, 4.0, 4.0)).norm();
 	shader.setUniform("opacity", clamp(5.f / dist, 0.f, 1.f));
+	
 
 	//shader.setUniform("view", view);
 	shader.setUniform("u_rotate", m);

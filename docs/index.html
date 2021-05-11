@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 
 <html lang="en">
 <head>
@@ -25,7 +25,9 @@
 
   <div class="container container-report">
     <h3>Abstract</h3>
-    <p></p>
+    <p>
+        Video games often use rainy scenes to add realism, ambience, and emotion to in-game environments. However, real-time realistic rain rendering is difficult to perform due to its computational and visual complexity. In our project, we implemented a real-time rain simulator in which rain particles fall onto a gravel-like surface, wetting the ground until it begins to show puddles reflecting the scene, on which the rain particles splash. We built upon the Project 4 codebase to make a particle interface in which point-sprite particles fall and collide with the plane, with velocity controlled by variable wind, updating a wetmap with kernel blur upon collision. We used this wetmap to update a dynamically changing texture map sampled by the ground shader. The ground shader used a combination of lambertian shading, phong shading, environmental texture, and bump mapping to generate a realistic surface that mirrored the scene below the ground plane to create the illusion of reflectance. We rendered point-sprite splashes at sites of collision and adjusted their opacity based on the wetmap. Finally, we used parallel computing of the dynamic texture map shading to allow for efficient real-time rendering. In our implementation process, we ran into challenges in debugging shaders, making raster graphics seem realistic, and laggy simulations. We found that using reference images can help in building shaders. For more realistic raster graphics, we took notes from tricks old video-games like DOOM used. To get around laggy or interrupted simulations, we debugged memory leaks and used parallelism. By building a realistic real-time rain simulator, we learned how to create and map dynamic textures, generate point sprites, implement particle interfaces, and a wide variety of techniques for building more realistic environments.
+    </p>
 
     <h3>Technical Approach and Results</h3>
 
@@ -36,7 +38,7 @@
 
     <h4>Rain Appearance</h4>
     <p>We render raindrops with a raindrop-shaped texture but without a raindrop-shaped mesh. At first, we tried to render raindrops based on <a href="index.html#ref">Real-time Rain Simulation</a>, which draw raindrops as point sprites in the screen space. While the appearance of raindrops looks good from a horizontal perspective, it keeps its elliptical shape and doesn't change the orientation of textures when viewing from a vertical perspective.</p>
-    <p>To achieve more realistic effects, we first bind each raindrop a \(1 \times 1\) quad lying on xy plane, with texture coordinates binded with its four vertices. However, the raindrop texture would not be visible with a single quad if viewing from the cross section of the quad. To ensure the raindrop keeps its appearance correct when viewing different perspectives, We convert the quad coordinates into a space with its x axis aligned with view space's x axis and its y axis aligned with the direction of the raindrop's velocity in view space. This ensures the texture always faces the camera in view space. Finally, we perform transformations into view space and projection space as usual. In addition, the opacity of each raindrop changes based on their distance from the camera to make the rainy scene more realistic. Below is a video showing how raindrops change their shapes in different perspectives.</p>
+    <p>To achieve more realistic effects, we first bind each raindrop a \(1 \times 1\) quad lying on xy plane, with texture coordinates binded with its four vertices. However, the raindrop texture would not be visible with a single quad if viewing from the cross section of the quad. To ensure the raindrop keeps its appearance correct when viewing from different perspectives, We convert the quad coordinates into a space with its x axis aligned with view space's x axis and its y axis aligned with the direction of the raindrop's velocity in view space. This ensures the texture always faces the camera in view space. Finally, we perform transformations into view space and projection space as usual. In addition, the opacity of each raindrop changes based on their distance from the camera to make the rainy scene more realistic. Below is a video showing how raindrops change their shapes in different perspectives.</p>
     <video width="800" controls>
       <source src="img/raindrops.mp4" type="video/mp4">
     Your browser does not support the video tag.
