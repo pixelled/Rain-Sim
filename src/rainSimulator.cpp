@@ -362,7 +362,7 @@ GLShader &RainSimulator::prepareShader(int index) {
     shader.setUniform("u_color", color, false);
     shader.setUniform("u_cam_pos", Vector3f(cam_pos.x, cam_pos.y, cam_pos.z), false);
     shader.setUniform("u_light_pos", Vector3f(4, 4, 4), false);
-    shader.setUniform("u_light_intensity", Vector3f(10, 10, 10), false);
+    shader.setUniform("u_light_intensity", Vector3f(6, 6, 6), false);
     shader.setUniform("u_texture_1_size", Vector2f(m_gl_texture_1_size.x, m_gl_texture_1_size.y), false);
     shader.setUniform("u_texture_2_size", Vector2f(m_gl_texture_2_size.x, m_gl_texture_2_size.y), false);
     shader.setUniform("u_texture_3_size", Vector2f(rainSystem->width, rainSystem->height), false);
@@ -782,45 +782,45 @@ bool RainSimulator::resizeCallbackEvent(int width, int height) {
 }
 
 void RainSimulator::initGUI(Screen *screen) {
-    /*Window *window;
+    Window *window;
 
     window = new Window(screen, "Simulation");
     window->setPosition(Vector2i(default_window_size(0) - 245, 15));
     window->setLayout(new GroupLayout(15, 6, 14, 5));
-*/
+
     // Simulation constants
 
-//    new Label(window, "Simulation", "sans-bold");
-//
-//    {
-//        Widget *panel = new Widget(window);
-//        GridLayout *layout =
-//                new GridLayout(Orientation::Horizontal, 2, Alignment::Middle, 5, 5);
-//        layout->setColAlignment({Alignment::Maximum, Alignment::Fill});
-//        layout->setSpacing(0, 10);
-//        panel->setLayout(layout);
-//
-//        new Label(panel, "frames/s :", "sans-bold");
-//
-//        IntBox<int> *fsec = new IntBox<int>(panel);
-//        fsec->setEditable(true);
-//        fsec->setFixedSize(Vector2i(100, 20));
-//        fsec->setFontSize(14);
-//        fsec->setValue(frames_per_sec);
-//        fsec->setSpinnable(true);
-//        fsec->setCallback([this](int value) { frames_per_sec = value; });
-//
-//        /*new Label(panel, "steps/frame :", "sans-bold");
-//
-//        IntBox<int> *num_steps = new IntBox<int>(panel);
-//        num_steps->setEditable(true);
-//        num_steps->setFixedSize(Vector2i(100, 20));
-//        num_steps->setFontSize(14);
-//        num_steps->setValue(simulation_steps);
-//        num_steps->setSpinnable(true);
-//        num_steps->setMinValue(0);
-//        num_steps->setCallback([this](int value) { simulation_steps = value; });*/
-//    }
+    new Label(window, "Simulation", "sans-bold");
+
+    {
+        Widget *panel = new Widget(window);
+        GridLayout *layout =
+                new GridLayout(Orientation::Horizontal, 2, Alignment::Middle, 5, 5);
+        layout->setColAlignment({Alignment::Maximum, Alignment::Fill});
+        layout->setSpacing(0, 10);
+        panel->setLayout(layout);
+
+        new Label(panel, "frames/s :", "sans-bold");
+
+        IntBox<int> *fsec = new IntBox<int>(panel);
+        fsec->setEditable(true);
+        fsec->setFixedSize(Vector2i(100, 20));
+        fsec->setFontSize(14);
+        fsec->setValue(frames_per_sec);
+        fsec->setSpinnable(true);
+        fsec->setCallback([this](int value) { frames_per_sec = value; });
+
+        /*new Label(panel, "steps/frame :", "sans-bold");
+
+        IntBox<int> *num_steps = new IntBox<int>(panel);
+        num_steps->setEditable(true);
+        num_steps->setFixedSize(Vector2i(100, 20));
+        num_steps->setFontSize(14);
+        num_steps->setValue(simulation_steps);
+        num_steps->setSpinnable(true);
+        num_steps->setMinValue(0);
+        num_steps->setCallback([this](int value) { simulation_steps = value; });*/
+    }
 
     // Gravity
 

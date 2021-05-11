@@ -31,7 +31,7 @@ void main() {
     const float height_scaling = 50.0;
     vec3 color = vec3(0.3f, 0.3f, 0.3f);
 
-    float height_cutoff = min(1.f, 0.3f + 0.75f * avg_color);
+    float height_cutoff = min(1.f, 0.4f + 0.75f * avg_color);
 //    float height_cutoff = 0.5f;
     float wetness_raw = (texture(u_texture_3, v_uv)).r;
     float wetness = curr_h < height_cutoff ? wetness_raw * 1.2 : 0;
