@@ -33,12 +33,13 @@
 
     <h4>Particle Simulation</h4>
     <p>
-      <!-- TODO: particle simulation implementation, hit position calculation & wind -->
+        To generate rainfall, we built a particle interface using a Raindrop class. The Raindrop class contains a raindrop’s position vector and a “hit” vector, which represents the location that the raindrop will eventually hit the ground (starting_position - velocity * (starting_position.y / velocity.y)). Upon initialization of this interface, a set amount of Raindrops are created with their positions set to a random coordinate within a range of coordinates and stored in a vector. Each time step, a simulate function would be called in which each Raindrop’s position would be updated according to a velocity class attribute by looping through the Raindrop vector. A check is made to see if the raindrop collided with the plane (y = 0 and within the x and z bounds of the plane using the hit attribute), and if satisfied, the wetmap is updated at the index that represents the collision location. In addition, a new Raindrop is generated and placed at the starting position. Wind is updated by user input in the UI, which calls an updateWind function that changes the velocity Raindrop class attribute.
     </p>
 
     <h4>Rain Appearance</h4>
     <p>We render raindrops with a raindrop-shaped texture but without a raindrop-shaped mesh. At first, we tried to render raindrops based on <a href="index.html#ref">Real-time Rain Simulation</a>, which draw raindrops as point sprites in the screen space. While the appearance of raindrops looks good from a horizontal perspective, it keeps its elliptical shape and doesn't change the orientation of textures when viewing from a vertical perspective.</p>
-    <p>To achieve more realistic effects, we first bind each raindrop a \(1 \times 1\) quad lying on xy plane, with texture coordinates binded with its four vertices. However, the raindrop texture would not be visible with a single quad if viewing from the cross section of the quad. To ensure the raindrop keeps its appearance correct when viewing from different perspectives, We convert the quad coordinates into a space with its x axis aligned with view space's x axis and its y axis aligned with the direction of the raindrop's velocity in view space. This ensures the texture always faces the camera in view space. Finally, we perform transformations into view space and projection space as usual. In addition, the opacity of each raindrop changes based on their distance from the camera to make the rainy scene more realistic. Below is a video showing how raindrops change their shapes in different perspectives.</p>
+    <p>To achieve more realistic effects, we first bind each raindrop a \(1 \times 1\) quad lying on xy plane, with texture coordinates binded with its four vertices. However, the raindrop texture would not be visible with a single quad if viewing from the cross section of the quad. To ensure the raindrop keeps its appearance correct when viewing from different perspectives, We convert the quad coordinates into a space with its x axis aligned with view space's x axis and its y axis aligned with the direction of the raindrop's velocity in view space. This ensures the texture always faces the camera in view space. Finally, we perform transformations into view space and projection space as usual. In addition, the opacity of each raindrop changes based on their distance from the camera and the light source to make the rainy scene more realistic. Below is a video showing how raindrops change their shapes in different perspectives.</p>
+      <p>We found creating Phong shading effects on the point-sprites challenging and attempted to use normal maps to generate these lighting effects. However, this proved difficult as the raindrops did not have a mesh. In the end, we averaged opacity effects based on distance from the camera and light source to give the illusion of lighting effects on the raindrops.</p>
     <video width="800" controls>
       <source src="img/raindrops.mp4" type="video/mp4">
     Your browser does not support the video tag.
@@ -91,7 +92,7 @@
     <p>Richard Yan: Project idea. Created project code skeleton from ClothSim codebase, implemented ground and scene object shaders, and screen space effects. Helped tuning appearance of raindrop and splash particles.</p>
     <p>Qingyuan Liu: Implemented rendering of raindrops, animation systems for splashes and dynamic painting; Optimized particle simulation for performance; Setup the particle system.</p>
     <p>Sher Shah: </p>
-    <p>Joie Zhou: </p>
+    <p>Joie Zhou: Helped set up the dynamic ground plane texture map. Helped set up opacity and lighting shading of raindrops.</p>
   </div>
 
   <div class="container container-video">
