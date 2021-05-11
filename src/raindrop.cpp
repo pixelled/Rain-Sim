@@ -100,7 +100,7 @@ void RaindropRenderer::render(GLShader& shader, Vector3D& position, Vector3D& ve
     float dist = -pos(2); //(position - Vector3D(4.0, 4.0, 4.0)).norm();
 	shader.setUniform("opacity", clamp(5.f / dist, 0.f, 1.f));
 
-	/*shader.setUniform("view", view);*/
+	shader.setUniform("view", view);
 	shader.setUniform("u_rotate", m);
 	shader.setUniform("u_model", u_model);
 	glBindVertexArray(this->quadVAO);
