@@ -42,11 +42,10 @@ public:
 };
 
 struct SplashInfo {
-	SplashInfo(Vector4f pos, unsigned int idx, float scale) : pos(pos), idx(idx), scale(scale) {}
+	SplashInfo(Vector4f pos, unsigned int idx) : pos(pos), idx(idx) {}
 
 	Vector4f pos;
 	unsigned int idx;
-	float scale;
 };
 
 class SplashRenderer : public SpriteRenderer {

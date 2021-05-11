@@ -373,7 +373,12 @@ int main(int argc, char **argv) {
 
   setGLFWCallbacks();
 
-  while (!glfwWindowShouldClose(window)) {
+    int width, height;
+    glfwGetFramebufferSize(window, &width, &height);
+    app->resizeCallbackEvent(width, height);
+
+
+    while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
 
     glClearColor(0.5f, 0.5f, 0.5f, 1.0f);

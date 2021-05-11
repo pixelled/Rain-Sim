@@ -106,7 +106,6 @@ void RainSimulator::load_textures() {
     glGenTextures(1, &m_gl_texture_6);
     glGenTextures(1, &m_gl_texture_7);
     glGenTextures(1, &m_gl_texture_8);
-    glGenTextures(1, &m_gl_texture_9);
     glGenTextures(1, &m_gl_cubemap_tex);
 
     m_gl_texture_1_size = load_texture(1, m_gl_texture_1, (m_project_root + "/textures/texture_1.png").c_str());
@@ -117,7 +116,6 @@ void RainSimulator::load_textures() {
     m_gl_texture_6_size = load_texture(6, m_gl_texture_6, (m_project_root + "/textures/fake_wetmap.png").c_str());
     m_gl_texture_7_size = load_texture(7, m_gl_texture_7, (m_project_root + "/textures/splash.png").c_str());
     m_gl_texture_8_size = load_texture(8, m_gl_texture_8, (m_project_root + "/textures/texture_1.png").c_str());
-    m_gl_texture_9_size = load_texture(9, m_gl_texture_9, (m_project_root + "/textures/raindrop_n.png").c_str());
 
     // Update raindrop texture size.
     raindrop_renderer.update_texture_size(m_gl_texture_4_size);
@@ -131,7 +129,6 @@ void RainSimulator::load_textures() {
     std::cout << "Texture 6 loaded with size: " << m_gl_texture_6_size << std::endl;
     std::cout << "Texture 7 loaded with size: " << m_gl_texture_7_size << std::endl;
     std::cout << "Texture 8 loaded with size: " << m_gl_texture_8_size << std::endl;
-    std::cout << "Texture 9 loaded with size: " << m_gl_texture_9_size << std::endl;
 
     std::vector<std::string> cubemap_fnames = {
             m_project_root + "/textures/cube/posx.png",
@@ -142,7 +139,7 @@ void RainSimulator::load_textures() {
             m_project_root + "/textures/cube/negz.png"
     };
 
-    load_cubemap(10, m_gl_cubemap_tex, cubemap_fnames);
+    load_cubemap(9, m_gl_cubemap_tex, cubemap_fnames);
     std::cout << "Loaded cubemap texture" << std::endl;
 }
 
@@ -214,7 +211,7 @@ void RainSimulator::load_shaders() {
             swap(shaders[i], shaders[RAINDROP_SHADER_IDX]);
         }
     }*/
-    for (size_t j = 0; j <= 10; j++) {
+    for (size_t j = 0; j <= 9; j++) {
         for (size_t i = 0; i < temp_shaders.size(); ++i) {
             if ((temp_shaders[i].display_name == "Ground" && j == GROUND_SHADER_IDX) ||
                 (temp_shaders[i].display_name == "Custom" && j == MESH_SHADER_IDX) ||
@@ -259,7 +256,6 @@ RainSimulator::~RainSimulator() {
     glDeleteTextures(1, &m_gl_texture_6);
     glDeleteTextures(1, &m_gl_texture_7);
     glDeleteTextures(1, &m_gl_texture_8);
-    glDeleteTextures(1, &m_gl_texture_9);
     glDeleteTextures(1, &m_gl_cubemap_tex);
 
     if (collision_objects) delete collision_objects;
@@ -292,9 +288,9 @@ void RainSimulator::init() {
     camera_info.fClip = 10000;
 
     // TODO: figure out the best parameters in this part
-    CGL::Vector3D target(1, 1 / 2, 1);
-    CGL::Vector3D c_dir(0., 0., 0.);
-    canonical_view_distance = 10;
+    CGL::Vector3D target(4, 1 / 2, 4);
+    CGL::Vector3D c_dir(-1, .5, 1);
+    canonical_view_distance = 5;
     scroll_rate = canonical_view_distance / 10;
 
     view_distance = canonical_view_distance * 2;
@@ -343,9 +339,7 @@ GLShader &RainSimulator::prepareShader(int index) {
         // Textures
         shader.setUniform("u_texture_4_size", Vector2f(m_gl_texture_4_size.x, m_gl_texture_4_size.y), false);
         shader.setUniform("u_texture_4", 4, false);
-        shader.setUniform("u_texture_cubemap", 10, false);
-        shader.setUniform("u_texture_9_size", Vector2f(m_gl_texture_9_size.x, m_gl_texture_9_size.y), false);
-        shader.setUniform("u_texture_9", 9, false);
+        shader.setUniform("u_texture_cubemap", 9, false);
         return shader;
     } else if (index == SPLASH_SHADER_IDX) {
         splash_renderer.update_view(view);
@@ -377,7 +371,6 @@ GLShader &RainSimulator::prepareShader(int index) {
     shader.setUniform("u_texture_6_size", Vector2f(m_gl_texture_6_size.x, m_gl_texture_6_size.y), false);
     shader.setUniform("u_texture_7_size", Vector2f(m_gl_texture_7_size.x, m_gl_texture_7_size.y), false);
     shader.setUniform("u_texture_8_size", Vector2f(m_gl_texture_8_size.x, m_gl_texture_8_size.y), false);
-    shader.setUniform("u_texture_9_size", Vector2f(m_gl_texture_9_size.x, m_gl_texture_9_size.y), false);
     // Textures
     shader.setUniform("u_texture_1", 1, false);
     shader.setUniform("u_texture_2", 2, false);
@@ -387,12 +380,11 @@ GLShader &RainSimulator::prepareShader(int index) {
     shader.setUniform("u_texture_6", 6, false);
     shader.setUniform("u_texture_7", 7, false);
     shader.setUniform("u_texture_8", 8, false);
-    shader.setUniform("u_texture_9", 9, false);
 
     shader.setUniform("u_normal_scaling", m_normal_scaling, false);
     shader.setUniform("u_height_scaling", m_height_scaling, false);
 
-    shader.setUniform("u_texture_cubemap", 10, false);
+    shader.setUniform("u_texture_cubemap", 9, false);
 
     return shader;
 }
@@ -783,51 +775,52 @@ bool RainSimulator::resizeCallbackEvent(int width, int height) {
     screen_w = width;
     screen_h = height;
     cout << "resize to " << width << " " << height << endl;
+    glViewport(0, 0, width, height);
 
     camera.set_screen_size(screen_w, screen_h);
     return true;
 }
 
 void RainSimulator::initGUI(Screen *screen) {
-    Window *window;
+    /*Window *window;
 
     window = new Window(screen, "Simulation");
     window->setPosition(Vector2i(default_window_size(0) - 245, 15));
     window->setLayout(new GroupLayout(15, 6, 14, 5));
-
+*/
     // Simulation constants
 
-    new Label(window, "Simulation", "sans-bold");
-
-    {
-        Widget *panel = new Widget(window);
-        GridLayout *layout =
-                new GridLayout(Orientation::Horizontal, 2, Alignment::Middle, 5, 5);
-        layout->setColAlignment({Alignment::Maximum, Alignment::Fill});
-        layout->setSpacing(0, 10);
-        panel->setLayout(layout);
-
-        new Label(panel, "frames/s :", "sans-bold");
-
-        IntBox<int> *fsec = new IntBox<int>(panel);
-        fsec->setEditable(true);
-        fsec->setFixedSize(Vector2i(100, 20));
-        fsec->setFontSize(14);
-        fsec->setValue(frames_per_sec);
-        fsec->setSpinnable(true);
-        fsec->setCallback([this](int value) { frames_per_sec = value; });
-
-        new Label(panel, "steps/frame :", "sans-bold");
-
-        IntBox<int> *num_steps = new IntBox<int>(panel);
-        num_steps->setEditable(true);
-        num_steps->setFixedSize(Vector2i(100, 20));
-        num_steps->setFontSize(14);
-        num_steps->setValue(simulation_steps);
-        num_steps->setSpinnable(true);
-        num_steps->setMinValue(0);
-        num_steps->setCallback([this](int value) { simulation_steps = value; });
-    }
+//    new Label(window, "Simulation", "sans-bold");
+//
+//    {
+//        Widget *panel = new Widget(window);
+//        GridLayout *layout =
+//                new GridLayout(Orientation::Horizontal, 2, Alignment::Middle, 5, 5);
+//        layout->setColAlignment({Alignment::Maximum, Alignment::Fill});
+//        layout->setSpacing(0, 10);
+//        panel->setLayout(layout);
+//
+//        new Label(panel, "frames/s :", "sans-bold");
+//
+//        IntBox<int> *fsec = new IntBox<int>(panel);
+//        fsec->setEditable(true);
+//        fsec->setFixedSize(Vector2i(100, 20));
+//        fsec->setFontSize(14);
+//        fsec->setValue(frames_per_sec);
+//        fsec->setSpinnable(true);
+//        fsec->setCallback([this](int value) { frames_per_sec = value; });
+//
+//        /*new Label(panel, "steps/frame :", "sans-bold");
+//
+//        IntBox<int> *num_steps = new IntBox<int>(panel);
+//        num_steps->setEditable(true);
+//        num_steps->setFixedSize(Vector2i(100, 20));
+//        num_steps->setFontSize(14);
+//        num_steps->setValue(simulation_steps);
+//        num_steps->setSpinnable(true);
+//        num_steps->setMinValue(0);
+//        num_steps->setCallback([this](int value) { simulation_steps = value; });*/
+//    }
 
     // Gravity
 
@@ -877,7 +870,8 @@ void RainSimulator::initGUI(Screen *screen) {
 
     // Wind
 
-    new Label(window, "Wind", "sans-bold");
+    // TODO: revert
+/*    new Label(window, "Wind", "sans-bold");
 
     {
         Widget *panel = new Widget(window);
@@ -919,25 +913,27 @@ void RainSimulator::initGUI(Screen *screen) {
         fb->setUnits("m/s");
         fb->setSpinnable(true);
         fb->setCallback([this](float value) { wind.z = value; });
-    }
+    }*/
 
-    window = new Window(screen, "Appearance");
+// TODO: end revert
+
+   /* window = new Window(screen, "Appearance");
     window->setPosition(Vector2i(15, 15));
-    window->setLayout(new GroupLayout(15, 6, 14, 5));
+    window->setLayout(new GroupLayout(15, 6, 14, 5));*/
 
     // Appearance
 
-    {
+    /*{
         ComboBox *cb = new ComboBox(window, shaders_combobox_names);
         cb->setFontSize(14);
         cb->setCallback(
                 [this, screen](int idx) { active_shader_idx = idx; });
         cb->setSelectedIndex(active_shader_idx);
-    }
+    }*/
 
     // Shader Parameters
 
-    new Label(window, "Color", "sans-bold");
+    /*new Label(window, "Color", "sans-bold");
 
     {
         ColorWheel *cw = new ColorWheel(window, color);
@@ -975,5 +971,5 @@ void RainSimulator::initGUI(Screen *screen) {
         fb->setValue(this->m_height_scaling);
         fb->setSpinnable(true);
         fb->setCallback([this](float value) { this->m_height_scaling = value; });
-    }
+    }*/
 }

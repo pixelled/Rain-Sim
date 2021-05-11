@@ -11,6 +11,8 @@ vec2 clamp(vec2 uv) {
 }
 
 void main() {
+//  out_color = vec4(vec3(texture(u_texture_8, in_uv)), 1);
+//  return;
   float h_offset = 1.f / 320.f;
   float v_offset = 1.f / 240.f;
   float h_kernel[3] = float[](1, 3, 1);

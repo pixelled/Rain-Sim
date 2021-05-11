@@ -6,7 +6,6 @@ out vec2 v_texcoords;
 uniform mat4 u_rotate;
 uniform mat4 u_model;
 uniform mat4 u_view_projection;
-//uniform mat4 view;
 
 void main() {
   v_texcoords = vertex.zw;

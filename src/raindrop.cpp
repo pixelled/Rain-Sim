@@ -72,7 +72,6 @@ void RaindropRenderer::render(GLShader& shader, Vector3D& position, Vector3D& ve
 	Vector4f vel(velocity.x, velocity.y, velocity.z, 1.0);
 	// Derive positions in view space
 	pos = view * pos;
-	//shader.setUniform("view_position", pos);
 	vel = view * vel;
 	Vector4f origin = view * Vector4f(0.0, 0.0, 0.0, 1.0);
 	vel = vel - origin;
@@ -102,9 +101,8 @@ void RaindropRenderer::render(GLShader& shader, Vector3D& position, Vector3D& ve
 	float light_dist = (position - Vector3D(4.0, 4.0, 4.0)).norm();
 	shader.setUniform("opacity", clamp(5.f / dist, 0.f, 1.f));
 	shader.setUniform("lighting_distance", clamp(light_dist / 30.0, 0.0, 1.0));
-	
 
-	//shader.setUniform("view", view);
+	/*shader.setUniform("view", view);*/
 	shader.setUniform("u_rotate", m);
 	shader.setUniform("u_model", u_model);
 	glBindVertexArray(this->quadVAO);
@@ -147,8 +145,7 @@ void SplashRenderer::initRenderData() {
 }
 
 void SplashRenderer::add_splash(Vector3D& position) {
-	float scale = (float)rand() / (float)RAND_MAX * 0.05 + 0.05;
-	splashes.emplace_back(Vector4f(position.x, position.y, position.z, 1.0), 0, scale);
+	splashes.emplace_back(Vector4f(position.x, position.y, position.z, 1.0), 0);
 }
 
 void SplashRenderer::render(GLShader& shader, SplashInfo &s) {
@@ -157,9 +154,9 @@ void SplashRenderer::render(GLShader& shader, SplashInfo &s) {
 
 	// u_model maps quad coordinates into view space
 	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::translate(model, glm::vec3(pos(0), pos(1) + s.scale - 0.03, pos(2)));
+	model = glm::translate(model, glm::vec3(pos(0), pos(1) + 0.05, pos(2)));
 	/*model = glm::rotate(model, (float)atan(velocity.y / velocity.x), glm::vec3(0.0f, 0.0f, 1.0f));*/
-	model = glm::scale(model, glm::vec3(glm::vec2(s.scale, s.scale), 1.0f));
+	model = glm::scale(model, glm::vec3(glm::vec2(0.1, 0.1), 1.0f));
 
 	// Change back to eigen matrix
 	Matrix4f u_model;
@@ -184,10 +181,10 @@ void SplashRenderer::render(GLShader& shader, SplashInfo &s) {
 void SplashRenderer::render_all(GLShader& shader, bool is_paused) {
 	int c = 0;
 	for (SplashInfo &s : splashes) {
-		if (s.idx >= end_idx)
+		if (s.idx >= end_idx - 4)
 			c++;
 		if (!is_paused)
-			s.idx += 2;
+			s.idx += 4;
         glEnable(GL_BLEND);
         glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ZERO, GL_ONE);
         SplashRenderer::render(shader, s);
