@@ -52,7 +52,8 @@ h1, h2, h3 {
 
 h1 {
   font-weight: 800;
-  font-size: 60px;
+  font-size: 144px;
+  line-height: 120px;
 }
 
 h2 {
@@ -82,7 +83,42 @@ h4 {
   font-style: oblique;
 }
 
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 600px;
+  background-color: #bbb;
+  color: #000;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 64px;
+}
+
+.title-contents {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 64px;
+}
+
+.title-contents h1 {
+  margin-bottom: 32px;
+}
+
+.title-contents h4 {
+  margin-top: 8px;
+}
+
+.toc {
+  position: relative;
+  margin-top: 600px;
+}
+
 .fill {
+  left: 0;
   width: 100%;
 }
 
@@ -116,7 +152,7 @@ figure, .grid-2>img, .grid-3>img {
   background-color: #1f1f1f;
   overflow: hidden;
   box-shadow: rgba(0, 0, 0, 0.5) 0 0 16px;
-  margin: 0;
+  margin: 0 auto;
 }
 
 img {

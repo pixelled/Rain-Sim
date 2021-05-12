@@ -17,10 +17,12 @@
 
 <body>
 
-  <div class="container container-title">
-    <h1>Rain Simulator</h1>
-    <i>Richard Yan, Qingyuan Liu, Sher Shah, Joie Zhou</i>
-    <h4>CS 184, Spring 2020</h4>
+  <div class="title">
+    <div class="title-contents">
+      <h1>Rain Simulator</h1>
+      <i>Richard Yan, Qingyuan Liu, Sher Shah, Joie Zhou</i>
+      <h4>CS 184, Spring 2021</h4>
+    </div>
   </div>
   <div class="toc">
     <h2>Table of Contents</h2>
@@ -66,6 +68,7 @@
 
     <h3>Dynamic Painting</h3>
     <p>We achieve the illusion of the ground gradually getting wetter by each raindrop using the technique of dynamic painting. With each collision of a raindrop, a pixel on a 2D array gets updated with an increased value. This 2D array is initialized to be a <code>128x128</code> square filled with 0's. Higher resolution was really not needed, for a number of reasons. First, the image will be blurred. Second, fragment shaders already sample this image with linear interpolation. Third, as this image is transferred to the GPU every frame, we need to minimize the memory bandwidth footprint.</p>
+    <p>A particular problem we encountered was the accurate mapping of collision coordinates to UV coordinates. During dynamic painting, it's hard to tell which link went wrong. It could be the collision coordinates that were wrongly calculated, it could be the wrong location in the wet map that was updated, or it could be the process transferring to the GPU being faulty. Debugging mainly consisted of eliminating variables, such as always assigning a corner of the wet map, or using a single particle to hit one place repeatedly.</p>
     <p>To simulate the illusion of raindrops gradually spreading out to form puddles, we perform a 3x3 kernel blur on the collision map every once in a while. This blur kernel has a heavy weight on the center pixel, so the spreading out looks natural and gradual. Since the blur kernel is a rank-1 dyad, we could compute the convolution in two separate passes, and we could parallelize the blur process. Further optimizations could be made by leveraging SIMD vector operations, but the performance was already satisfactory enough that we opted to not go any further. The final performance is such that toggling blur on and off made no noticeable difference on simulation speed.</p>
 
     <p>Here's a video demonstrating the dynamic painting and blurring procedure:</p>
@@ -84,6 +87,7 @@
       <img src="img/fillup/4.jpg" /><img src="img/fillup/5.jpg" />
     </div>
     <p>To give the illusion of a reflection, wet areas of the ground are made partly transparent, especially when there's little gloss or when the environmental texture is darker. The alpha value is determined by the height-corrected wetness and the intensity of Phong/environmental texture outputs. Through the transparent ground, one can then see the mirrored scene imagery on the other side of the ground, which is rendered using tricks described in the next part.</p>
+    <p>We found it helpful to have a Blender-made reference scene to tune the aesthetics of our final product. By first creating the ground plane, the wet map and reflections in Blender, we took note the roughness and degree of environment texture that looked best.</p>
     <h4>Reflection Tricks</h4>
     <p>There are multiple common ways in raster graphics to simulate the illusion of a reflective plane. Some of the most used in video games are 1. mirrored scene objects; 2. baked reflection cubemap; and 3. screen space reflection. We opted for the first option for a number of reasons: the obvious reason would be that it's easy to implement and gives a relatively satisfactory effect out of the box. In addition, there are drawbacks for the other options: baking reflection maps requires external tools and are only viable in cases where scene objects are stationary, and screen space reflection might not display the reflection entirely due to the object being so near the reflective surface. With relatively simple geometry to render and consequently acceptable performance costs, we went for the mirrored scene objects trick.</p>
     <p>To ensure it looks correct, the shaders for the reflected object requires light sources and environmental textures be "inverted" in a sense. This can be easily achieved by doing lighting calculations and cubemap sampling using the "fake" position vectors as if it were upright, but computing glPosition using the reflected position vectors.</p>
@@ -93,6 +97,7 @@
     <h4>Screen Space Effects</h4>
     <p>One cherry on top is the blurred appearance of the reflection. This is achieved through screen space effects. Before rendering anything else, a new off-screen framebuffer is generated. Since the contents of this framebuffer will be blurred, the framebuffer is intentionally created with a fraction of the resolution of the regular viewport. The color component of the framebuffer is attached to an equally-sized 2D texture for use later; the stencil and depth components are created as RenderBuffer objects since they won't be accessed later. After binding to this newly created framebuffer, the reflected object(s) are rendered. We then switch to the screen buffer, and render the reflection "image" onto the screen framebuffer using a plane and a special blur shader. We then render the scene objects. The ground and the particles are rendered last as they all contain transparency.</p>
     <p>The blur shader ignores vertex position inputs and maps them straight to the four corners of the viewport. A convolution kernel is applied at each pixel to blur out the framebuffer texture and achieve the desired effect. One drawback of this approach is the fact that the blurred amount is invariant to the scale of the reflection: this can most likely be remedied by incorporating the depth map of the off-screen framebuffer, and scaling the kernel sample offsets based on the depths at each point.</p>
+    <p>An interesting bug we encountered happened on high DPI displays, where the framebuffer size is twice that of the logical pixels. This would cause the image to display only at a corner of the window. To fix this, we made an additional call to the simulator object when creating the GLFW window to give it the accurate dpi-adjusted window size, instead of resorting to the default behavior of assuming a predetermined window size.</p>
     <div class="fill">
       <figure>
         <img src="img/reflection/0.jpg" />
@@ -110,8 +115,7 @@
     </div>
     <p>A major lesson learned is to take pages from video games, which are the culminations of years of head-scratching from raster engine developers. For example, for reflections, the three options were widely used in video games, and the advantages/disadvantages were clear. We can then choose appropriately weighing the pros and cons.</p>
     <h2><a id="results">Results</a></h2>
-    <h3>Video</h3>
-    <video controls>
+    <video class="fill" controls>
       <source src="video/final.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
