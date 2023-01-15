@@ -5,6 +5,9 @@
 Win32/*
 .vs
 CMakeSettings.json
+.idea
+cmake-build-debug
+Testing/Temporary
 
 # Prerequisites
 *.d
